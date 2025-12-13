@@ -1,0 +1,172 @@
+/* PerformancesSectionコンポーネントのスタイル */
+
+/* セクション全体の設定 */
+.performances {
+  /* 背景色（半透明の白 - 背景画像が見えるように） */
+  background-color: rgba(255, 255, 255, 0.85); /* 85%の白、15%の透過 */
+  
+  /* 上下に十分な余白を設定（舞台美術的なレイヤー感を出すため多めに） */
+  padding: 100px 20px;
+  
+  /* 最小高さを確保 */
+  min-height: 400px;
+  
+  /* 背景画像が見えるように半透明にする */
+  backdrop-filter: blur(2px); /* 背景を少しぼかして可読性を向上（オプション） */
+}
+
+/* コンテンツコンテナ */
+.performances-container {
+  /* 最大幅を設定 */
+  max-width: 1200px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+  
+  /* 幅が狭い場合の余白確保 */
+  width: 100%;
+  
+  /* コンテンツの背景（さらに白くして可読性を確保） */
+  background-color: rgba(255, 255, 255, 0.95);
+  
+  /* パディングを追加（コンテンツエリアを明確に） */
+  padding: 50px 40px;
+  
+  /* 角を丸く */
+  border-radius: 12px;
+  
+  /* 影を付けて立体感を出す */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* セクション見出し */
+.performances-title {
+  /* フォントサイズ */
+  font-size: 2rem;
+  
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 中央寄せ */
+  text-align: center;
+  
+  /* 下余白（グリッドとの間隔） */
+  margin-bottom: 50px;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色 */
+  color: #333333;
+}
+
+/* 公演カードのグリッドコンテナ */
+.performances-grid {
+  /* グリッドレイアウトを使用 */
+  display: grid;
+  
+  /* グリッドの間隔（gap）を設定 */
+  gap: 30px;
+  
+  /* レスポンシブ対応：
+     - モバイル（小さい画面）：1列
+     - タブレット・PC（大きい画面）：2列 */
+  grid-template-columns: 1fr;
+}
+
+/* タブレット以上の画面サイズで2列にする */
+@media (min-width: 768px) {
+  .performances-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 公演カードのスタイル */
+.performance-card {
+  /* 背景色（白） */
+  background-color: #ffffff;
+  
+  /* パディング（カード内の余白） */
+  padding: 30px;
+  
+  /* 角を少し丸く（見た目を柔らかく） */
+  border-radius: 8px;
+  
+  /* 影を付けて立体感を出す */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  
+  /* ホバー時の効果（オプション） */
+  transition: box-shadow 0.3s ease;
+}
+
+/* カードホバー時の効果（オプション） */
+.performance-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* カード内のタイトル */
+.card-title {
+  /* フォントサイズ */
+  font-size: 1.5rem;
+  
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 下余白（他の情報との間隔） */
+  margin-bottom: 20px;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色 */
+  color: #333333;
+}
+
+/* カード内の情報（日時・会場など） */
+.card-info {
+  /* 下余白（情報項目間の間隔） */
+  margin-bottom: 12px;
+  
+  /* 最後の項目の下余白は不要 */
+  margin-top: 0;
+  
+  /* フォントサイズ */
+  font-size: 1rem;
+}
+
+/* 情報のラベル（「日時：」「会場：」など） */
+.card-label {
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 色 */
+  color: #555555;
+}
+
+/* 情報の値 */
+.card-value {
+  /* 色 */
+  color: #333333;
+}
+
+/* カード内の説明文 */
+.card-description {
+  /* 上余白（情報と説明文の間隔） */
+  margin-top: 20px;
+  
+  /* 下余白 */
+  margin-bottom: 0;
+  
+  /* フォントサイズ */
+  font-size: 1rem;
+  
+  /* 行間（読みやすさを向上） */
+  line-height: 1.7;
+  
+  /* 色 */
+  color: #666666;
+  
+  /* 単語の折り返しを許可 */
+  word-wrap: break-word;
+}
+

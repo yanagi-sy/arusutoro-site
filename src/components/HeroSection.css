@@ -1,0 +1,131 @@
+/* HeroSectionコンポーネントのスタイル */
+
+/* ヒーローセクションの基本設定 */
+.hero {
+  /* 全画面表示 */
+  height: 100vh;
+  width: 100%;
+  
+  /* 背景画像の設定 */
+  background-size: cover; /* 画像を要素全体にカバー */
+  background-position: center; /* 画像を中央に配置 */
+  background-repeat: no-repeat; /* 画像の繰り返しなし */
+  
+  /* 位置指定（子要素の配置に必要） */
+  position: relative;
+  
+  /* テキストを配置するためのフレックスボックス */
+  display: flex;
+  align-items: center; /* 縦方向の中央揃え */
+  justify-content: flex-start; /* 横方向は左寄せ（画像の主役に被らない） */
+  
+  /* 左側の余白（画面左から適度な距離を取る） */
+  padding-left: 8%;
+  
+  /* 最小高さを確保 */
+  min-height: 100vh;
+  
+  /* 背景画像が上に来るように */
+  overflow: hidden;
+}
+
+/* 縦書きテキストのコンテナ */
+.hero-vertical-text {
+  /* 位置指定（画面左寄りに配置） */
+  position: relative;
+  
+  /* 背景画像の主役（右側のモチーフ）に被らないように、左側に配置 */
+  /* margin-leftは不要（左寄せのため） */
+  
+  /* z-indexで背景画像の上に表示 */
+  z-index: 1;
+}
+
+/* 縦書きの劇団名タイトル */
+.hero-title-vertical {
+  /* 縦書きを設定（右から左へ） */
+  writing-mode: vertical-rl;
+  
+  /* 文字の向き（通常の縦書き） */
+  text-orientation: upright;
+  
+  /* フォントサイズ（大きく、トップページの主役として扱う） */
+  font-size: 5rem;
+  
+  /* フォントウェイト（太字） */
+  font-weight: bold;
+  
+  /* 文字間隔（縦書きの場合、letter-spacingが行間になる） */
+  letter-spacing: 0.25em;
+  
+  /* 色は墨色（黒系） */
+  color: #1a1a1a; /* 濃い黒（墨色） */
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* パディング（文字の周りに余白） */
+  padding: 30px 0;
+  
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* 影を少し付けて、背景画像の上でも読みやすくする */
+  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.4);
+  
+  /* 行の高さ（縦書きの場合、line-heightが横方向の間隔になる） */
+  line-height: 1.6;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体を推奨） */
+  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .hero {
+    /* 左側の余白を減らす */
+    padding-left: 6%;
+  }
+  
+  .hero-title-vertical {
+    /* フォントサイズを少し小さく */
+    font-size: 4rem;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .hero {
+    /* 左側の余白をさらに減らす */
+    padding-left: 5%;
+    
+    /* 小さい画面でも左寄せを維持 */
+    justify-content: flex-start;
+  }
+  
+  .hero-title-vertical {
+    /* フォントサイズを小さく（モバイル対応） */
+    font-size: 3rem;
+    
+    /* 文字間隔を調整 */
+    letter-spacing: 0.2em;
+    
+    /* パディングを調整 */
+    padding: 20px 0;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .hero {
+    padding-left: 4%;
+  }
+  
+  .hero-title-vertical {
+    /* フォントサイズをさらに小さく */
+    font-size: 2.5rem;
+    
+    /* 文字間隔を調整 */
+    letter-spacing: 0.15em;
+  }
+}

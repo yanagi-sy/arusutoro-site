@@ -1,0 +1,194 @@
+/* Navigationコンポーネントのスタイル */
+
+/* ナビゲーション全体 */
+.navigation {
+  /* 背景色（半透明の白 - 背景画像が見えるように） */
+  background-color: rgba(255, 255, 255, 0.9); /* 90%の白、10%の透過 */
+  
+  /* スクロールしても見やすいように少し影を付ける */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  
+  /* 背景を少しぼかして可読性を向上（オプション） */
+  backdrop-filter: blur(4px);
+  
+  /* 上下の余白 */
+  padding: 15px 20px;
+  
+  /* 位置を固定する場合（オプション） */
+  /* position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; */
+  
+  /* 幅 */
+  width: 100%;
+}
+
+/* ナビゲーションコンテナ（最大幅を制限して中央寄せ） */
+.nav-container {
+  /* 最大幅を設定 */
+  max-width: 1200px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+  
+  /* フレックスボックスで横並びレイアウト */
+  display: flex;
+  
+  /* 左右の端に配置 */
+  justify-content: space-between;
+  
+  /* 垂直方向の中央揃え */
+  align-items: center;
+  
+  /* 幅 */
+  width: 100%;
+}
+
+/* ロゴ部分（左側） */
+.nav-logo {
+  /* フレックスボックスでアイコンとテキストを横並び */
+  display: flex;
+  
+  /* 垂直方向の中央揃え */
+  align-items: center;
+  
+  /* アイコンとテキストの間隔 */
+  gap: 12px;
+}
+
+/* ロゴアイコン（画像がない場合はプレースホルダー） */
+.logo-icon {
+  /* サイズ */
+  width: 40px;
+  height: 40px;
+  
+  /* 画像を丸くする場合（オプション） */
+  /* border-radius: 50%; */
+  
+  /* 画像の表示方法 */
+  object-fit: contain;
+}
+
+/* アイコン画像がない場合のプレースホルダー */
+.logo-icon-placeholder {
+  /* サイズ */
+  width: 40px;
+  height: 40px;
+  
+  /* 背景色 */
+  background-color: #333333;
+  
+  /* 文字色 */
+  color: #ffffff;
+  
+  /* 中央揃え */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* フォントサイズ */
+  font-size: 1.2rem;
+  
+  /* フォントウェイト */
+  font-weight: bold;
+  
+  /* 角を丸く */
+  border-radius: 4px;
+}
+
+/* ロゴテキスト（劇団名） */
+.logo-text {
+  /* フォントサイズ */
+  font-size: 1.2rem;
+  
+  /* フォントウェイト */
+  font-weight: bold;
+  
+  /* 色 */
+  color: #333333;
+  
+  /* テキストの装飾をなし */
+  text-decoration: none;
+}
+
+/* メニュー部分（右側） */
+.nav-menu {
+  /* リストのスタイルをリセット */
+  list-style: none;
+  
+  /* パディングとマージンをリセット */
+  padding: 0;
+  margin: 0;
+  
+  /* フレックスボックスで横並び */
+  display: flex;
+  
+  /* メニュー項目間の間隔 */
+  gap: 30px;
+  
+  /* 垂直方向の中央揃え */
+  align-items: center;
+}
+
+/* メニュー項目 */
+.nav-menu-item {
+  /* リスト項目のスタイルをリセット */
+  margin: 0;
+  padding: 0;
+}
+
+/* メニューリンク */
+.nav-link {
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* 色 */
+  color: #333333;
+  
+  /* フォントサイズ */
+  font-size: 1rem;
+  
+  /* フォントウェイト */
+  font-weight: 500;
+  
+  /* ホバー時の色変化 */
+  transition: color 0.3s ease;
+  
+  /* パディング（クリック領域を広げる） */
+  padding: 8px 0;
+  
+  /* ブロック要素として表示 */
+  display: block;
+}
+
+/* リンクホバー時のスタイル */
+.nav-link:hover {
+  /* ホバー時の色 */
+  color: #666666;
+}
+
+/* レスポンシブ対応：小さな画面の場合 */
+@media (max-width: 768px) {
+  /* ナビゲーションのパディングを減らす */
+  .navigation {
+    padding: 12px 15px;
+  }
+  
+  /* ロゴテキストのサイズを小さく */
+  .logo-text {
+    font-size: 1rem;
+  }
+  
+  /* メニュー項目間の間隔を減らす */
+  .nav-menu {
+    gap: 20px;
+  }
+  
+  /* リンクのフォントサイズを小さく */
+  .nav-link {
+    font-size: 0.9rem;
+  }
+}
+

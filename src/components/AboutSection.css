@@ -1,0 +1,96 @@
+/* AboutSectionコンポーネントのスタイル */
+
+/* セクション全体の設定 */
+.about {
+  /* 背景色（半透明の白 - 背景画像が見えるように） */
+  background-color: rgba(255, 255, 255, 0.85); /* 85%の白、15%の透過 */
+  
+  /* 上下に十分な余白を設定（舞台美術的なレイヤー感を出すため多めに） */
+  padding: 100px 20px;
+  
+  /* 最小高さを確保（コンテンツが少なくても見栄えが良くなる） */
+  min-height: 400px;
+  
+  /* 背景画像が見えるように半透明にする */
+  backdrop-filter: blur(2px); /* 背景を少しぼかして可読性を向上（オプション） */
+}
+
+/* コンテンツコンテナ（最大幅を制限して読みやすく） */
+.about-container {
+  /* 最大幅を設定（読みやすい幅に制限） */
+  max-width: 800px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+  
+  /* 幅が狭い場合の余白確保 */
+  width: 100%;
+  
+  /* コンテンツの背景（さらに白くして可読性を確保） */
+  background-color: rgba(255, 255, 255, 0.95);
+  
+  /* パディングを追加（コンテンツエリアを明確に） */
+  padding: 50px 40px;
+  
+  /* 角を丸く */
+  border-radius: 12px;
+  
+  /* 影を付けて立体感を出す */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* 見出しのスタイル */
+.about-title {
+  /* フォントサイズ */
+  font-size: 2rem;
+  
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 中央寄せ */
+  text-align: center;
+  
+  /* 下余白（本文との間隔） */
+  margin-bottom: 40px;
+  
+  /* 上余白（必要に応じて調整可能） */
+  margin-top: 0;
+  
+  /* 色 */
+  color: #333333;
+}
+
+/* 本文コンテンツエリア */
+.about-content {
+  /* 段落間の余白は個別に設定 */
+}
+
+/* 本文テキスト（段落） */
+.about-text {
+  /* フォントサイズ */
+  font-size: 1.1rem;
+  
+  /* 行間（読みやすさを向上） */
+  line-height: 1.8;
+  
+  /* 段落の下余白 */
+  margin-bottom: 20px;
+  
+  /* 最後の段落の下余白は不要 */
+  margin-top: 0;
+  
+  /* 色 */
+  color: #555555;
+  
+  /* テキストの整列（両端揃え） */
+  text-align: justify;
+  
+  /* 文章量が増えても崩れないように、単語の折り返しを許可 */
+  word-wrap: break-word;
+}
+
+/* 最後の段落の下余白を削除 */
+.about-text:last-child {
+  margin-bottom: 0;
+}
+

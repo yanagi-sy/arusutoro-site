@@ -1,0 +1,60 @@
+/* Appコンポーネントのスタイル */
+
+/* アプリケーション全体の背景画像ラッパー */
+.app-background {
+  /* 背景画像を設定 */
+  /* 実際の画像URLに差し替えてください */
+  /* 例: background-image: url('https://example.com/background.jpg'); */
+  /* またはローカルファイル: background-image: url('./assets/images/background.jpg'); */
+  background-image: url('ここに画像URLを指定してください');
+  
+  /* 背景画像のサイズ設定（画面全体をカバー） */
+  background-size: cover;
+  
+  /* 背景画像の位置（中央配置） */
+  background-position: center;
+  
+  /* 背景画像の繰り返しなし */
+  background-repeat: no-repeat;
+  
+  /* 背景を固定（スクロールしても動かない） */
+  background-attachment: fixed;
+  
+  /* 最小高さを確保（コンテンツが少なくても背景が表示される） */
+  min-height: 100vh;
+  
+  /* 幅を全画面に */
+  width: 100%;
+  
+  /* 位置指定（背景レイヤーとして機能） */
+  position: relative;
+}
+
+/* 背景画像の上にレイヤーを重ねる場合（画像が強すぎる場合の調整用） */
+.app-background::before {
+  /* 疑似要素でオーバーレイを作成 */
+  content: '';
+  
+  /* 位置を背景画像と同じにする */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  
+  /* 背景色のオーバーレイ（必要に応じて調整） */
+  /* 画像の可視性を下げたい場合は、rgbaの値を調整 */
+  background-color: rgba(0, 0, 0, 0.1); /* 10%の黒オーバーレイ（必要に応じて変更） */
+  
+  /* z-indexで背景画像の上、コンテンツの下に配置 */
+  z-index: 0;
+  
+  /* ポインターイベントを無効化（コンテンツをクリックできるように） */
+  pointer-events: none;
+}
+
+/* すべての子要素を背景の上に表示 */
+.app-background > * {
+  position: relative;
+  z-index: 1;
+}
