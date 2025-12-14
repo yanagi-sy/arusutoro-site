@@ -10,6 +10,7 @@
   background-size: cover; /* 画像を要素全体にカバー */
   background-position: center; /* 画像を中央に配置 */
   background-repeat: no-repeat; /* 画像の繰り返しなし */
+  /* overflow: hidden で画面からはみ出た部分を切り取る */
   
   /* 位置指定（子要素の配置に必要） */
   position: relative;
@@ -17,28 +18,68 @@
   /* テキストを配置するためのフレックスボックス */
   display: flex;
   align-items: center; /* 縦方向の中央揃え */
-  justify-content: flex-start; /* 横方向は左寄せ（画像の主役に被らない） */
+  justify-content: flex-start; /* 横方向は左寄せ（背景モチーフに被らない） */
   
-  /* 左側の余白（画面左から適度な距離を取る） */
-  padding-left: 8%;
+  /* 左側の位置（画面左から約10% - さらに左に寄せた） */
+  padding-left: 10%;
   
   /* 最小高さを確保 */
   min-height: 100vh;
   
-  /* 背景画像が上に来るように */
+  /* 画面からはみ出ている画像を切り取る（確実に隠す） */
   overflow: hidden;
+  overflow-x: hidden; /* 横方向のはみ出しを確実に隠す */
+  overflow-y: hidden; /* 縦方向のはみ出しを確実に隠す */
+  
+  /* z-indexを設定（ナビゲーションより低く） */
+  z-index: 1;
 }
 
-/* 縦書きテキストのコンテナ */
-.hero-vertical-text {
-  /* 位置指定（画面左寄りに配置） */
+/* 背景画像と次のセクションの境目にグラデーションを追加 */
+.hero::after {
+  /* 疑似要素でグラデーションオーバーレイを作成 */
+  content: '';
+  
+  /* 位置をHeroSectionの下部に配置 */
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  
+  /* グラデーションの高さ（強さを緩めるため高さを増やす） */
+  height: 200px;
+  
+  /* グラデーション（透明から次のセクションの背景色（--bg-base: #f7f5f1）へ、強さを緩める） */
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 245, 241, 0) 0%,
+    rgba(247, 245, 241, 0.3) 40%,
+    rgba(247, 245, 241, 0.7) 70%,
+    rgba(247, 245, 241, 1) 100%
+  );
+  
+  /* z-indexで背景画像の上、テキストの下に配置 */
+  z-index: 1;
+  
+  /* ポインターイベントを無効化（コンテンツをクリックできるように） */
+  pointer-events: none;
+}
+
+/* テキストコンテンツのコンテナ */
+.hero-content {
+  /* 位置指定（画面左から約25%、上下中央） */
   position: relative;
   
-  /* 背景画像の主役（右側のモチーフ）に被らないように、左側に配置 */
-  /* margin-leftは不要（左寄せのため） */
+  /* 縦書きとローマ字、キャッチコピーを縦に並べる */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* 左揃え */
   
-  /* z-indexで背景画像の上に表示 */
-  z-index: 1;
+  /* 各要素の間隔 */
+  gap: 20px;
+  
+  /* z-indexで背景画像の上に表示（ナビゲーションより低く） */
+  z-index: 2;
 }
 
 /* 縦書きの劇団名タイトル */
@@ -49,54 +90,209 @@
   /* 文字の向き（通常の縦書き） */
   text-orientation: upright;
   
-  /* フォントサイズ（大きく、トップページの主役として扱う） */
-  font-size: 5rem;
+  /* フォントサイズ（71px - 現在より+10px大きくした） */
+  font-size: 71px;
   
   /* フォントウェイト（太字） */
-  font-weight: bold;
+  font-weight: 700;
   
   /* 文字間隔（縦書きの場合、letter-spacingが行間になる） */
-  letter-spacing: 0.25em;
+  letter-spacing: 0.1em;
   
-  /* 色は墨色（黒系） */
-  color: #1a1a1a; /* 濃い黒（墨色） */
+  /* 単語間隔（縦書きの場合、word-spacingが単語間のスペースを制御） */
+  word-spacing: -0.6em;
+  
+  /* 色は墨色（#111） */
+  color: #111;
   
   /* マージンをリセット */
   margin: 0;
   
   /* パディング（文字の周りに余白） */
-  padding: 30px 0;
+  padding: 0;
   
   /* テキストの装飾をなし */
   text-decoration: none;
   
   /* 影を少し付けて、背景画像の上でも読みやすくする */
-  text-shadow: 0 2px 6px rgba(255, 255, 255, 0.4);
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
   
   /* 行の高さ（縦書きの場合、line-heightが横方向の間隔になる） */
+  line-height: 1.8;
+  
+  /* フォントファミリー（Google Fonts: Shippori Mincho B1、後から差し替え可能） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* アニメーション：初回表示時のフェードイン＋上方向移動 */
+  /* 初期状態：透明で少し下に配置 */
+  opacity: 0;
+  transform: translateY(20px);
+  
+  /* アニメーションを適用（初回のみ、ループしない） */
+  animation: heroTitleFadeIn 1.5s ease-out forwards;
+  
+  /* アニメーション遅延（少し遅れて表示） */
+  animation-delay: 0.3s;
+}
+
+/* アニメーション定義：フェードイン＋上方向移動 */
+@keyframes heroTitleFadeIn {
+  /* 開始状態 */
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  /* 終了状態 */
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ローマ字表記（横書き、控えめに配置） */
+.hero-subtitle-roman {
+  /* 横書き（デフォルト） */
+  writing-mode: horizontal-tb;
+  
+  /* フォントサイズ（小さめ、控えめに） */
+  font-size: 20px;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.15em;
+  
+  /* 色は墨色（#111、少し薄め） */
+  color: #111;
+  opacity: 0.7; /* 控えめにするため少し透明に */
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* パディング */
+  padding: 0;
+  
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* 影を少し付ける */
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+  
+  /* 行の高さ */
+  line-height: 1.5;
+  
+  /* フォントファミリー（縦書きと同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 縦書きの横に配置するため、左側にマージン */
+  margin-left: 10px;
+  
+  /* 縦書きのテキストの高さに合わせて位置調整 */
+  margin-top: -10px;
+  
+  /* アニメーション：初回表示時のフェードイン */
+  opacity: 0;
+  animation: heroSubtitleFadeIn 1.2s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+/* アニメーション定義：ローマ字のフェードイン */
+@keyframes heroSubtitleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+/* キャッチコピー（控えめに表示） */
+.hero-catchphrase {
+  /* 横書き（デフォルト） */
+  writing-mode: horizontal-tb;
+  
+  /* フォントサイズ（26px - 現在より+10px大きくした） */
+  font-size: 26px;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+  
+  /* 色は墨色（#111、控えめに） */
+  color: #111;
+  opacity: 0.8; /* 控えめにするため少し透明に */
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* パディング */
+  padding: 0;
+  
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* 影を少し付ける */
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+  
+  /* 行の高さ */
   line-height: 1.6;
   
-  /* フォントファミリー（和風の雰囲気を出すため、明朝体を推奨） */
-  font-family: 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  /* フォントファミリー（縦書きと同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 縦書きの横に配置するため、左側にマージン */
+  margin-left: 10px;
+  
+  /* ローマ字との間隔を確保 */
+  margin-top: 10px;
+  
+  /* 世界観を補足する位置づけとして、さらに控えめに */
+  font-style: italic;
+  
+  /* アニメーション：初回表示時のフェードイン */
+  opacity: 0;
+  animation: heroCatchphraseFadeIn 1.2s ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+/* アニメーション定義：キャッチコピーのフェードイン */
+@keyframes heroCatchphraseFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
 }
 
 /* レスポンシブ対応：タブレットサイズ */
 @media (max-width: 1024px) {
   .hero {
-    /* 左側の余白を減らす */
-    padding-left: 6%;
+    /* 左側の位置を調整（さらに左に寄せた） */
+    padding-left: 8%;
   }
   
   .hero-title-vertical {
-    /* フォントサイズを少し小さく */
-    font-size: 4rem;
+    /* フォントサイズを少し小さく（+10px大きくした） */
+    font-size: 63px;
+  }
+  
+  .hero-subtitle-roman {
+    font-size: 13px;
+  }
+  
+  .hero-catchphrase {
+    font-size: 25px;
   }
 }
 
 /* レスポンシブ対応：小さな画面（モバイル） */
 @media (max-width: 768px) {
   .hero {
-    /* 左側の余白をさらに減らす */
+    /* 左側の位置を調整（10%左に寄せた） */
     padding-left: 5%;
     
     /* 小さい画面でも左寄せを維持 */
@@ -104,28 +300,45 @@
   }
   
   .hero-title-vertical {
-    /* フォントサイズを小さく（モバイル対応） */
-    font-size: 3rem;
+    /* フォントサイズを小さく（モバイル対応、+10px大きくした） */
+    font-size: 55px;
     
     /* 文字間隔を調整 */
-    letter-spacing: 0.2em;
-    
-    /* パディングを調整 */
-    padding: 20px 0;
+    letter-spacing: 0.10em;
+  }
+  
+  .hero-subtitle-roman {
+    font-size: 12px;
+    margin-left: 8px;
+  }
+  
+  .hero-catchphrase {
+    font-size: 24px;
+    margin-left: 8px;
   }
 }
 
 /* レスポンシブ対応：非常に小さな画面 */
 @media (max-width: 480px) {
   .hero {
-    padding-left: 4%;
+    padding-left: 5%;
   }
   
   .hero-title-vertical {
-    /* フォントサイズをさらに小さく */
-    font-size: 2.5rem;
+    /* フォントサイズをさらに小さく（+10px大きくした） */
+    font-size: 47px;
     
     /* 文字間隔を調整 */
-    letter-spacing: 0.15em;
+    letter-spacing: 0.05em;
+  }
+  
+  .hero-subtitle-roman {
+    font-size: 11px;
+    margin-left: 6px;
+  }
+  
+  .hero-catchphrase {
+    font-size: 23px;
+    margin-left: 6px;
   }
 }

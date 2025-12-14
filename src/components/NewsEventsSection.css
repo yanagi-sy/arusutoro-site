@@ -1,0 +1,374 @@
+/**
+ * NewsEventsSectionコンポーネントのスタイル
+ * 
+ * お知らせセクションを掲示板形式（シンプルなテキスト）で表示します。
+ * 装飾は最小限で、日付・種別・タイトルのみを表示します。
+ * 
+ * 淡く明るい和風のトーンに合わせて、--bg-baseを使用し、配色を統一します。
+ */
+
+/* セクション全体の設定 */
+.news-events {
+  /* 背景色（--bg-base: メイン背景色、和紙のような生成り） */
+  background-color: var(--bg-base);
+  
+  /* 上下に余白を設定（1/5増やした: 60px * 1.2 = 72px） */
+  padding: 72px 20px;
+  
+  /* 最小高さを確保 */
+  min-height: 200px;
+}
+
+/* コンテンツコンテナ（ページ中央に配置） */
+.news-events-container {
+  /* 最大幅を設定 */
+  max-width: 900px;
+  
+  /* 中央寄せ（ページ中央に配置） */
+  margin: 0 auto;
+  
+  /* 幅が狭い場合の余白確保 */
+  width: 100%;
+  
+  /* 子要素（見出しなど）を中央揃え */
+  text-align: center;
+}
+
+/* 「NEWS」ラベル（見出しの上部） */
+.news-events-label {
+  /* フォントサイズ（小さめ） */
+  font-size: 0.9rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 中央揃え */
+  text-align: center;
+  
+  /* 下余白（見出しとの間隔） */
+  margin-bottom: 10px;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色（--text-sub: やや薄めの色） */
+  color: var(--text-sub);
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.2em;
+  
+  /* 英字を大文字で表示 */
+  text-transform: uppercase;
+}
+
+/* セクション見出し */
+.news-events-title {
+  /* フォントサイズ（大きめ） */
+  font-size: 2rem;
+  
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 中央揃え */
+  text-align: center;
+  
+  /* 下余白（リストとの間隔） */
+  margin-bottom: 40px;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色（--text-main: 薄墨色） */
+  color: var(--text-main);
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+  
+  /* インラインブロック要素にして下線の幅をテキストに合わせる */
+  display: inline-block;
+  
+  /* 幅を自動にしてテキスト幅に合わせる */
+  width: auto;
+  
+  /* 下線のパディング（下線と文字の間隔） */
+  padding-bottom: 15px;
+  
+  /* 左右のパディング（テキスト左右+1文字程度の余白） */
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+  
+  /* 下線を追加（パディング内に下線が含まれる） */
+  border-bottom: 1px solid var(--border-soft);
+}
+
+/* ニュース・イベントリスト（掲示板形式、シンプルなテキスト） */
+.news-events-list {
+  /* リストのスタイルをリセット */
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  
+  /* 各項目の間隔 */
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  
+  /* 装飾は最小限（背景色・枠線・影なし） */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* ニュース・イベント項目（掲示板形式、シンプルなテキスト） */
+.news-events-item {
+  /* リンクのスタイルをリセット */
+  text-decoration: none;
+  color: inherit;
+  
+  /* 背景色なし（シンプルに） */
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+  
+  /* パディング */
+  padding: 18px 0;
+  
+  /* フレックスボックスで横並び（日付・種別・タイトル） */
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  
+  /* ホバー時の効果（控えめに） */
+  transition: opacity 0.3s ease;
+  
+  /* 幅を制限して中央配置（レスポンシブ対応） */
+  width: 100%;
+  max-width: 600px;
+  
+  /* テキストは左揃え（親要素のtext-align: centerの影響を受けないように） */
+  text-align: left;
+}
+
+/* 項目ホバー時の効果（控えめに） */
+.news-events-item:hover {
+  /* 透明度を少し下げる（控えめに） */
+  opacity: 0.7;
+}
+
+/* 日付 */
+.news-events-date {
+  /* フォントサイズ */
+  font-size: 0.9rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（--text-sub: やや薄めの色） */
+  color: var(--text-sub);
+  
+  /* 最小幅を設定（日付の表示幅を揃える） */
+  min-width: 100px;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+}
+
+/* 種別 */
+.news-events-tag {
+  /* フォントサイズ */
+  font-size: 0.85rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 背景色なし（シンプルに） */
+  background-color: transparent;
+  
+  /* 色（--text-sub: やや薄めの色） */
+  color: var(--text-sub);
+  
+  /* パディングなし */
+  padding: 0;
+  
+  /* 角を丸くしない */
+  border-radius: 0;
+  
+  /* 最小幅を設定（種別の表示幅を揃える） */
+  min-width: 60px;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+  
+  /* 白スペースを保持 */
+  white-space: nowrap;
+}
+
+/* 項目タイトル */
+.news-events-item-title {
+  /* フォントサイズ */
+  font-size: 1rem;
+  
+  /* フォントウェイト（通常、装飾は最小限） */
+  font-weight: 400;
+  
+  /* 色（--text-main: 薄墨色） */
+  color: var(--text-main);
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* 柔軟に伸びる（残りのスペースを使用） */
+  flex: 1;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.02em;
+}
+
+/* ニュース項目間の区切り線 */
+.news-events-divider {
+  /* 区切り線の高さ */
+  height: 1px;
+  
+  /* 背景色（--border-soft: ソフトなボーダー色、シンプルに） */
+  background-color: var(--border-soft);
+  
+  /* マージン（上下の余白） */
+  margin: 0;
+  
+  /* 表示 */
+  display: block;
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .news-events {
+    padding: 60px 20px; /* 1/5増やした: 50px * 1.2 = 60px */
+  }
+  
+  .news-events-label {
+    font-size: 0.85rem;
+    margin-bottom: 8px;
+  }
+  
+  .news-events-title {
+    font-size: 1.8rem;
+    margin-bottom: 35px;
+    padding-bottom: 12px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  
+  .news-events-item {
+    padding: 16px 0;
+    gap: 18px;
+  }
+  
+  .news-events-date {
+    font-size: 0.85rem;
+    min-width: 90px;
+  }
+  
+  .news-events-tag {
+    font-size: 0.8rem;
+    min-width: 55px;
+  }
+  
+  .news-events-item-title {
+    font-size: 0.95rem;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .news-events {
+    padding: 48px 15px; /* 1/5増やした: 40px * 1.2 = 48px */
+  }
+  
+  .news-events-label {
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+  
+  .news-events-title {
+    font-size: 1.6rem;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  
+  .news-events-item {
+    /* モバイルでは縦並びに変更 */
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    padding: 16px 0;
+  }
+  
+  .news-events-date {
+    font-size: 0.85rem;
+    min-width: auto;
+  }
+  
+  .news-events-tag {
+    font-size: 0.8rem;
+    min-width: auto;
+  }
+  
+  .news-events-item-title {
+    font-size: 0.95rem;
+    width: 100%;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .news-events {
+    padding: 42px 10px; /* 1/5増やした: 35px * 1.2 = 42px */
+  }
+  
+  .news-events-label {
+    font-size: 0.75rem;
+    margin-bottom: 6px;
+  }
+  
+  .news-events-title {
+    font-size: 1.4rem;
+    margin-bottom: 25px;
+    padding-bottom: 8px;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+  
+  .news-events-item {
+    padding: 14px 0;
+  }
+  
+  .news-events-date {
+    font-size: 0.8rem;
+  }
+  
+  .news-events-tag {
+    font-size: 0.75rem;
+  }
+  
+  .news-events-item-title {
+    font-size: 0.9rem;
+  }
+}

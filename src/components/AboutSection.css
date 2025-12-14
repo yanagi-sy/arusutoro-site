@@ -1,24 +1,24 @@
-/* AboutSectionコンポーネントのスタイル */
+/* AboutSectionコンポーネントのスタイル（口上セクション） */
 
 /* セクション全体の設定 */
 .about {
-  /* 背景色（半透明の白 - 背景画像が見えるように） */
-  background-color: rgba(255, 255, 255, 0.85); /* 85%の白、15%の透過 */
+  /* 背景色（白〜生成り、和紙のような色） */
+  background-color: #faf9f6; /* 生成りがかった白 */
   
   /* 上下に十分な余白を設定（舞台美術的なレイヤー感を出すため多めに） */
   padding: 100px 20px;
   
   /* 最小高さを確保（コンテンツが少なくても見栄えが良くなる） */
-  min-height: 400px;
+  min-height: 300px;
   
-  /* 背景画像が見えるように半透明にする */
-  backdrop-filter: blur(2px); /* 背景を少しぼかして可読性を向上（オプション） */
+  /* 背景画像が見えるように半透明にする（オプション） */
+  /* backdrop-filter: blur(1px); */
 }
 
-/* コンテンツコンテナ（最大幅を制限して読みやすく） */
+/* コンテンツコンテナ（和紙の紙面のような見た目） */
 .about-container {
   /* 最大幅を設定（読みやすい幅に制限） */
-  max-width: 800px;
+  max-width: 700px;
   
   /* 中央寄せ */
   margin: 0 auto;
@@ -26,67 +26,55 @@
   /* 幅が狭い場合の余白確保 */
   width: 100%;
   
-  /* コンテンツの背景（さらに白くして可読性を確保） */
-  background-color: rgba(255, 255, 255, 0.95);
+  /* コンテンツの背景（さらに白くして和紙の紙面のような印象） */
+  background-color: #ffffff;
   
   /* パディングを追加（コンテンツエリアを明確に） */
-  padding: 50px 40px;
+  padding: 60px 50px;
   
-  /* 角を丸く */
-  border-radius: 12px;
+  /* 角をやや丸く（和紙の紙面のような柔らかさ） */
+  border-radius: 8px;
   
-  /* 影を付けて立体感を出す */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  /* 影をごく薄く付けて、紙が置かれている印象を出す */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  
+  /* 背景画像の上に「紙が置かれている」印象を出す */
+  position: relative;
 }
 
-/* 見出しのスタイル */
-.about-title {
-  /* フォントサイズ */
-  font-size: 2rem;
-  
-  /* 太字 */
-  font-weight: bold;
-  
-  /* 中央寄せ */
-  text-align: center;
-  
-  /* 下余白（本文との間隔） */
-  margin-bottom: 40px;
-  
-  /* 上余白（必要に応じて調整可能） */
-  margin-top: 0;
-  
-  /* 色 */
-  color: #333333;
-}
-
-/* 本文コンテンツエリア */
+/* 口上のテキストコンテンツエリア */
 .about-content {
   /* 段落間の余白は個別に設定 */
 }
 
-/* 本文テキスト（段落） */
+/* 口上のテキスト（段落） */
 .about-text {
   /* フォントサイズ */
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   
-  /* 行間（読みやすさを向上） */
-  line-height: 1.8;
+  /* 行間（読みやすさを向上、文学的・詩的な印象） */
+  line-height: 2.2;
   
   /* 段落の下余白 */
-  margin-bottom: 20px;
+  margin-bottom: 0;
   
   /* 最後の段落の下余白は不要 */
   margin-top: 0;
   
-  /* 色 */
-  color: #555555;
+  /* 色（墨色、和紙に書かれた文字のような） */
+  color: #2a2a2a;
   
-  /* テキストの整列（両端揃え） */
-  text-align: justify;
+  /* テキストの整列（左揃え、文学的・詩的な印象） */
+  text-align: left;
   
   /* 文章量が増えても崩れないように、単語の折り返しを許可 */
   word-wrap: break-word;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔（読みやすさと文学的印象のバランス） */
+  letter-spacing: 0.05em;
 }
 
 /* 最後の段落の下余白を削除 */
@@ -94,3 +82,53 @@
   margin-bottom: 0;
 }
 
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .about {
+    padding: 80px 20px;
+  }
+  
+  .about-container {
+    padding: 50px 40px;
+  }
+  
+  .about-text {
+    font-size: 1.1rem;
+    line-height: 2.0;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .about {
+    padding: 60px 15px;
+  }
+  
+  .about-container {
+    padding: 40px 30px;
+    border-radius: 6px;
+  }
+  
+  .about-text {
+    font-size: 1rem;
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .about {
+    padding: 50px 10px;
+  }
+  
+  .about-container {
+    padding: 30px 20px;
+    border-radius: 4px;
+  }
+  
+  .about-text {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}

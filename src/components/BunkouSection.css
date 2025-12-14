@@ -1,0 +1,455 @@
+/**
+ * BunkouSectionコンポーネントのスタイル
+ * 
+ * 文抗時代セクションのデザインを定義します。
+ * セクション全体を枠線で囲み、左側に画像（アルバム風）、右側にテキストを配置します。
+ * 主張しすぎない、落ち着いたトーンを心がけています。
+ */
+
+/* セクション全体の設定 */
+.bunkou-section {
+  /* 背景色（白〜生成り、和紙のような色、控えめに） */
+  background-color: #faf9f6;
+  
+  /* 上下に余白を設定（控えめに、特に上側を詰める） */
+  padding: 30px 20px 40px 20px;
+  /* 上: 30px（縮める）、下: 40px（やや多め）、左右: 20px */
+}
+
+/* コンテナ（セクション全体を囲むコンテナ） */
+.bunkou-section-container {
+  /* 最大幅を設定（説明文が2行で収まるように約2文字分拡張: 1000px + 80px = 1080px） */
+  max-width: 1080px;
+  
+  /* 中央寄せ（ページ中央に配置） */
+  margin: 0 auto;
+  
+  /* 幅が狭い場合の余白確保 */
+  width: 100%;
+  
+  /* 背景色（生成りがかった色） */
+  background-color: #f1f1e6;
+  
+  /* 枠線なし */
+  border: none;
+  
+  /* パディング（内側の余白、上下を縮める） */
+  padding: 30px 40px;
+  /* 上下: 30px（縮める）、左右: 40px */
+}
+
+/* セクション見出しコンテナ（最上部） */
+.bunkou-section-header {
+  /* 中央寄せ */
+  text-align: center;
+  
+  /* 下余白（コンテンツとの間隔） */
+  margin-bottom: 40px;
+}
+
+/* セクション見出し（他セクションとトーンを揃える） */
+.bunkou-section-title {
+  /* フォントサイズ（やや大きめ） */
+  font-size: 2.3rem;
+  
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+  
+  /* 下線（細め、見出しの強調用、装飾過多にならないよう控えめに） */
+  border-bottom: 1px solid #d0d0d0;
+  
+  /* 下線の下にパディング（見出しと下線の間隔） */
+  padding-bottom: 8px;
+  
+  /* インライン要素として表示（下線の長さを文字幅に合わせる） */
+  display: inline-block;
+}
+
+/* 内側コンテナ（横並びレイアウト：左：画像、右：テキスト） */
+.bunkou-section-inner {
+  /* フレックスボックスで横並び */
+  display: flex;
+  align-items: center;
+  
+  /* 画像とテキストの間隔 */
+  gap: 40px;
+  
+  /* 高さ固定はせず、中身にフィットさせる */
+  /* min-heightは削除 */
+}
+
+/* 画像セクション（ポラロイド風アルバム、左側、V字配置） */
+.bunkou-section-photos {
+  /* フレックスボックスで画像を横並び */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* 画像間の間隔（負の値は使えないため、個別のmarginで調整） */
+  gap: 0;
+  
+  /* 相対位置指定（子要素の絶対位置の基準点） */
+  position: relative;
+  
+  /* 幅を30%前後に設定（控えめ） */
+  width: 30%;
+  
+  /* フレックスアイテムの縮小を許可しない（固定幅を維持） */
+  flex-shrink: 0;
+}
+
+/* ポラロイド風の写真コンテナ（共通スタイル） */
+.bunkou-photo {
+  /* 相対位置指定（画像の位置調整用） */
+  position: relative;
+  
+  /* 背景色（白い枠、ポラロイド風） */
+  background-color: #ffffff;
+  
+  /* パディング（上下左右に白い枠を作る） */
+  padding: 10px 10px 40px 10px;
+  /* 注: 下のパディング（40px）を太めにして、ポラロイドの特徴的な下部を表現 */
+  
+  /* 弱めの影（強いカードUIは禁止） */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  
+  /* 影のぼかしを弱めに（自然な感じ） */
+  filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.06));
+}
+
+/* ポラロイド風の画像本体 */
+.bunkou-photo-img {
+  /* 画像の幅を100%に（親要素の幅に合わせる） */
+  width: 100%;
+  
+  /* 最大幅を設定（小さめに） */
+  max-width: 100%;
+  
+  /* 高さは自動（アスペクト比を維持） */
+  height: auto;
+  
+  /* 画像を表示 */
+  display: block;
+}
+
+/* 1枚目の画像（主役、少し大きく） */
+.bunkou-photo-1 .bunkou-photo-img {
+  /* わずかに大きくする（110%） */
+  transform: scale(1.1);
+  /* 注: 親要素のrotateと組み合わせて使用 */
+}
+
+/* 1枚目の写真（左側、わずかに左へ回転、V字の左側、主役として前面に配置） */
+.bunkou-photo-1 {
+  /* わずかに左へ回転（-1.5度） */
+  transform: rotate(-1.5deg);
+  
+  /* z-index: 前面に表示（主役として） */
+  z-index: 2;
+  
+  /* 右に少しずらす（中央付近で重なり合うように） */
+  margin-right: -15px;
+}
+
+/* 2枚目の写真（右側、わずかに右へ回転、V字の右側、後ろに配置） */
+.bunkou-photo-2 {
+  /* わずかに右へ回転（+1.8度） */
+  transform: rotate(1.8deg);
+  
+  /* z-index: 1枚目の後ろに表示 */
+  z-index: 1;
+  
+  /* 左に少しずらす（中央付近で重なり合うように） */
+  margin-left: -15px;
+}
+
+/* テキストコンテンツセクション（右側） */
+.bunkou-section-text-content {
+  /* フレックスボックスで縦並び */
+  display: flex;
+  flex-direction: column;
+  
+  /* 残りのスペースを使用 */
+  flex: 1;
+  
+  /* 上端に揃える（ただし、親要素で中央揃えにしている） */
+  align-items: flex-start;
+  
+  /* 縦方向の中央揃え（親要素のalign-items: centerで実現） */
+  justify-content: center;
+}
+
+/* 説明文セクション */
+.bunkou-section-content {
+  /* テキストを左揃え */
+  text-align: left;
+  
+  /* 下余白（区切り線との間隔） */
+  margin-bottom: 20px;
+  
+  /* 幅を100%に */
+  width: 100%;
+}
+
+/* 紹介文の各段落 */
+.bunkou-section-text {
+  /* フォントサイズ（大きめ、画像より目立つように） */
+  font-size: 1.15rem;
+  
+  /* 行間（読みやすく） */
+  line-height: 1.8;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* マージン（段落間の間隔） */
+  margin: 0 0 16px 0;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.02em;
+}
+
+/* 最後の段落には下マージンなし */
+.bunkou-section-text:last-child {
+  margin-bottom: 0;
+}
+
+/* 区切り線（説明文とSNSリンクの間） */
+.bunkou-section-divider {
+  /* ボーダーをリセット */
+  border: none;
+  
+  /* 区切り線の高さ */
+  height: 1px;
+  
+  /* 背景色（薄いグレー） */
+  background-color: #e0e0e0;
+  
+  /* 幅を100%に */
+  width: 100%;
+  
+  /* マージン（上下の余白） */
+  margin: 0 0 20px 0;
+}
+
+/* SNSリンクセクション */
+.bunkou-section-links {
+  /* フレックスボックスで左揃え */
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  
+  /* 各リンクの間隔 */
+  gap: 20px;
+  
+  /* 幅を100%に */
+  width: 100%;
+}
+
+/* SNSリンク */
+.bunkou-section-link {
+  /* リンクのスタイルをリセット */
+  text-decoration: none;
+  
+  /* フォントサイズ（控えめなサイズ） */
+  font-size: 0.9rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（少し薄め、控えめに） */
+  color: #666666;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+  
+  /* ホバー時の効果（控えめに） */
+  transition: opacity 0.3s ease;
+  
+  /* 下線を追加（控えめに） */
+  border-bottom: 1px solid #cccccc;
+  
+  /* パディング（リンククリック領域を確保） */
+  padding: 4px 0;
+}
+
+/* リンクホバー時（マウスオーバー時）の効果 */
+.bunkou-section-link:hover {
+  /* 透明度を少し下げる（控えめに） */
+  opacity: 0.7;
+  
+  /* 下線の色を少し濃く（控えめに） */
+  border-bottom-color: #999999;
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .bunkou-section {
+    padding: 25px 20px 35px 20px;
+  }
+  
+  .bunkou-section-container {
+    padding: 25px 35px;
+  }
+  
+  .bunkou-section-title {
+    font-size: 2.1rem;
+  }
+  
+  .bunkou-section-inner {
+    gap: 30px;
+  }
+  
+  .bunkou-section-photos {
+    width: 32%;
+  }
+  
+  .bunkou-section-text {
+    font-size: 1.1rem;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .bunkou-section {
+    padding: 25px 15px 30px 15px;
+  }
+  
+  .bunkou-section-container {
+    padding: 25px 20px;
+  }
+  
+  .bunkou-section-title {
+    font-size: 1.9rem;
+  }
+  
+  .bunkou-section-header {
+    margin-bottom: 25px;
+  }
+  
+  /* モバイルでは縦並びに変更 */
+  .bunkou-section-inner {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    min-height: auto;
+  }
+  
+  .bunkou-section-photos {
+    width: 100%;
+    justify-content: center;
+    /* モバイルでは縦並びに変更 */
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  /* モバイルでは回転とズレを解除 */
+  .bunkou-photo-1 {
+    transform: none;
+    margin-right: 0;
+    z-index: auto;
+  }
+  
+  .bunkou-photo-1 .bunkou-photo-img {
+    transform: none;
+  }
+  
+  .bunkou-photo-2 {
+    transform: none;
+    margin-left: 0;
+    z-index: auto;
+  }
+  
+  .bunkou-section-text-content {
+    width: 100%;
+  }
+  
+  .bunkou-section-content {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .bunkou-section-text {
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+  
+  .bunkou-section-links {
+    justify-content: center;
+  }
+  
+  .bunkou-section-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .bunkou-section {
+    padding: 20px 10px 25px 10px;
+  }
+  
+  .bunkou-section-container {
+    padding: 20px 15px;
+  }
+  
+  .bunkou-section-title {
+    font-size: 1.7rem;
+  }
+  
+  .bunkou-section-header {
+    margin-bottom: 20px;
+  }
+  
+  .bunkou-section-inner {
+    gap: 25px;
+  }
+  
+  .bunkou-section-photos {
+    gap: 20px;
+  }
+  
+  /* 小さな画面でも回転とズレを解除 */
+  .bunkou-photo-1 {
+    transform: none;
+    margin-right: 0;
+    z-index: auto;
+  }
+  
+  .bunkou-photo-1 .bunkou-photo-img {
+    transform: none;
+  }
+  
+  .bunkou-photo-2 {
+    transform: none;
+    margin-left: 0;
+    z-index: auto;
+  }
+  
+  .bunkou-section-text {
+    font-size: 0.95rem;
+  }
+  
+  .bunkou-section-link {
+    font-size: 0.8rem;
+  }
+}

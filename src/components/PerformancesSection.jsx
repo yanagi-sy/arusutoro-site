@@ -1,31 +1,32 @@
 // PerformancesSectionコンポーネント
-// 公演一覧セクション（カード形式のグリッドレイアウト）
+// 演目（公演一覧）セクション（カード形式のグリッドレイアウト）
+// 将来、配列データやDBに差し替えやすい構造にする
 import './PerformancesSection.css'
 
 function PerformancesSection() {
-  // 仮データ（後で実際のデータに差し替え可能）
+  // 公演データ（仮データ、後で実際のデータに差し替え可能）
   // データ構造を変更しやすいように配列で定義
   const performances = [
     {
       id: 1,
-      title: '仮公演タイトル 1',
-      date: '2025年4月15日',
-      venue: '東京劇場',
-      description: 'これは仮の公演情報です。後で実際の公演データに差し替えます。説明文は複数行にわたっても問題なく表示されます。'
+      title: '月下の舞',
+      date: '2025年4月15日〜20日',
+      synopsis: '静寂の中に響く言葉の断片。月明かりに浮かぶ身体の軌跡が、時間を超えた物語を紡ぐ。',
+      detailUrl: '#performance-1' // 詳細ページへのリンク（仮）
     },
     {
       id: 2,
-      title: '仮公演タイトル 2',
-      date: '2025年5月20日',
-      venue: '大阪劇場',
-      description: '公演の詳細情報がここに表示されます。カード形式で見やすく整理されています。'
+      title: '風の記憶',
+      date: '2025年6月10日〜15日',
+      synopsis: '失われた記憶の断片を拾い集めながら、身体と声が織りなす瞬間の詩。',
+      detailUrl: '#performance-2'
     },
     {
       id: 3,
-      title: '仮公演タイトル 3',
-      date: '2025年6月10日',
-      venue: '京都劇場',
-      description: 'このセクションはグリッドレイアウトで表示され、レスポンシブ対応になっています。'
+      title: '沈黙の向こう',
+      date: '2025年8月5日〜10日',
+      synopsis: '言葉にならない想いが、空間に刻まれる。静寂と緊張のあわいに生まれる刹那の像。',
+      detailUrl: '#performance-3'
     }
   ]
 
@@ -44,20 +45,18 @@ function PerformancesSection() {
               {/* 公演タイトル */}
               <h3 className="card-title">{performance.title}</h3>
               
-              {/* 日時 */}
-              <div className="card-info">
-                <span className="card-label">日時：</span>
-                <span className="card-value">{performance.date}</span>
+              {/* 上演日時 */}
+              <div className="card-date">
+                {performance.date}
               </div>
               
-              {/* 会場 */}
-              <div className="card-info">
-                <span className="card-label">会場：</span>
-                <span className="card-value">{performance.venue}</span>
-              </div>
+              {/* 短い一文のあらすじ（抽象寄り） */}
+              <p className="card-synopsis">{performance.synopsis}</p>
               
-              {/* 説明文 */}
-              <p className="card-description">{performance.description}</p>
+              {/* 「詳細を見る」リンク */}
+              <a href={performance.detailUrl} className="card-link">
+                詳細を見る
+              </a>
             </div>
           ))}
         </div>
@@ -67,4 +66,3 @@ function PerformancesSection() {
 }
 
 export default PerformancesSection
-

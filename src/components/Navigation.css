@@ -1,37 +1,44 @@
 /* Navigationコンポーネントのスタイル */
+/* スティッキーヘッダー：ページのどこを見ていても常に画面上部に表示 */
 
-/* ナビゲーション全体 */
+/* ナビゲーション全体（スティッキーヘッダー：常に画面上部に固定表示） */
 .navigation {
-  /* 背景色（半透明の白 - 背景画像が見えるように） */
-  background-color: rgba(255, 255, 255, 0.9); /* 90%の白、10%の透過 */
+  /* 背景色（さらに暗い赤系、黒は禁止） */
+  background-color: #a2b5ae; /* より暗い赤 */
   
   /* スクロールしても見やすいように少し影を付ける */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   
-  /* 背景を少しぼかして可読性を向上（オプション） */
-  backdrop-filter: blur(4px);
+  /* 上下の余白（縦幅をさらに縮める） */
+  padding: 3px 30px;
   
-  /* 上下の余白 */
-  padding: 15px 20px;
+  /* 位置を固定（スティッキーヘッダー：常に画面上部に固定、スクロール時についてくる） */
+  /* !importantを追加して、他のスタイルに上書きされないようにする */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
   
-  /* 位置を固定する場合（オプション） */
-  /* position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000; */
+  /* z-indexを設定（すべてのコンテンツより前面に表示） */
+  /* !importantを追加して、他のスタイルに上書きされないようにする */
+  z-index: 10000 !important;
   
   /* 幅 */
   width: 100%;
+  
+  /* トランジション（背景色の変化を滑らかに） */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ナビゲーションコンテナ（最大幅を制限して中央寄せ） */
+/* ナビゲーションコンテナ（横幅を最大限使うレイアウト、中央寄せをやめる） */
 .nav-container {
-  /* 最大幅を設定 */
-  max-width: 1200px;
+  /* 最大幅を設定（横幅を最大限使う） */
+  max-width: 100%;
   
-  /* 中央寄せ */
-  margin: 0 auto;
+  /* 左右に余白を設定（中央寄せをやめ、横幅を活かす） */
+  /* 右側のパディングを減らして、ナビ項目を5文字分左へずらす */
+  margin: 0;
+  padding: 0 50px 0 50px;
   
   /* フレックスボックスで横並びレイアウト */
   display: flex;
@@ -46,74 +53,37 @@
   width: 100%;
 }
 
-/* ロゴ部分（左側） */
-.nav-logo {
-  /* フレックスボックスでアイコンとテキストを横並び */
-  display: flex;
-  
-  /* 垂直方向の中央揃え */
-  align-items: center;
-  
-  /* アイコンとテキストの間隔 */
-  gap: 12px;
+/* テキストロゴ（左側、クリック不可、表示のみ） */
+.nav-logo-text {
+  /* リンクではないので、通常のdivとして表示 */
+  display: block;
 }
 
-/* ロゴアイコン（画像がない場合はプレースホルダー） */
-.logo-icon {
-  /* サイズ */
-  width: 40px;
-  height: 40px;
+/* テキストロゴのラベル（大きく表示：26〜30px、28pxに設定） */
+.nav-logo-text-label {
+  /* フォントサイズ（大きく：28px） */
+  font-size: 28px;
   
-  /* 画像を丸くする場合（オプション） */
-  /* border-radius: 50%; */
+  /* フォントウェイト（太字、明確に） */
+  font-weight: 700;
   
-  /* 画像の表示方法 */
-  object-fit: contain;
-}
-
-/* アイコン画像がない場合のプレースホルダー */
-.logo-icon-placeholder {
-  /* サイズ */
-  width: 40px;
-  height: 40px;
-  
-  /* 背景色 */
-  background-color: #333333;
-  
-  /* 文字色 */
+  /* 色（白） */
   color: #ffffff;
-  
-  /* 中央揃え */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  
-  /* フォントサイズ */
-  font-size: 1.2rem;
-  
-  /* フォントウェイト */
-  font-weight: bold;
-  
-  /* 角を丸く */
-  border-radius: 4px;
-}
-
-/* ロゴテキスト（劇団名） */
-.logo-text {
-  /* フォントサイズ */
-  font-size: 1.2rem;
-  
-  /* フォントウェイト */
-  font-weight: bold;
-  
-  /* 色 */
-  color: #333333;
   
   /* テキストの装飾をなし */
   text-decoration: none;
+  
+  /* フォントファミリー（劇団名と同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* メニュー部分（右側） */
+/* メニュー部分（右側、5文字分左へずらす） */
 .nav-menu {
   /* リストのスタイルをリセット */
   list-style: none;
@@ -126,10 +96,13 @@
   display: flex;
   
   /* メニュー項目間の間隔 */
-  gap: 30px;
+  gap: 0;
   
   /* 垂直方向の中央揃え */
   align-items: center;
+  
+  /* 右側のマージンを増やして、さらに左へずらす */
+  margin-right: 120px; /* 約6〜7文字分（19px × 6〜7文字 ≈ 114〜133px） */
 }
 
 /* メニュー項目 */
@@ -137,58 +110,194 @@
   /* リスト項目のスタイルをリセット */
   margin: 0;
   padding: 0;
+  
+  /* フレックスボックスで区切り線とリンクを横並び */
+  display: flex;
+  align-items: center;
 }
 
-/* メニューリンク */
+/* ナビ項目間の区切り線 */
+.nav-menu-divider {
+  /* 縦の区切り線 */
+  width: 1px;
+  height: 18px; /* 縦幅を縮める */
+  
+  /* 背景色（白系） */
+  background-color: rgba(255, 255, 255, 0.4);
+  
+  /* マージン（区切り線の前後、少し減らす） */
+  margin: 0 18px;
+  
+  /* 表示 */
+  display: block;
+}
+
+/* メニューリンク（全項目を同じスタイルで統一） */
 .nav-link {
   /* テキストの装飾をなし */
   text-decoration: none;
   
-  /* 色 */
-  color: #333333;
+  /* 色（白） */
+  color: #ffffff;
   
-  /* フォントサイズ */
-  font-size: 1rem;
+  /* フォントサイズ（18〜20px：19px） */
+  font-size: 19px;
   
-  /* フォントウェイト */
-  font-weight: 500;
+  /* フォントウェイト（太め） */
+  font-weight: 600;
   
   /* ホバー時の色変化 */
   transition: color 0.3s ease;
   
-  /* パディング（クリック領域を広げる） */
-  padding: 8px 0;
+  /* パディング（クリック領域を広げる、縦幅を縮める） */
+  padding: 4px 0;
   
   /* ブロック要素として表示 */
   display: block;
+  
+  /* 補足文を含む場合のレイアウト */
+  position: relative;
+  
+  /* フォントファミリー（劇団名と同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
 /* リンクホバー時のスタイル */
 .nav-link:hover {
-  /* ホバー時の色 */
-  color: #666666;
+  /* ホバー時の色（少し薄めの白） */
+  color: #cccccc;
+}
+
+/* 補足文（note）のスタイル（文抗時代） */
+.nav-link-note {
+  /* ブロック要素として表示（改行される） */
+  display: block;
+  
+  /* フォントサイズ（小さく、控えめに） */
+  font-size: 0.7rem;
+  
+  /* フォントウェイト（太め） */
+  font-weight: 900;
+  
+  /* 色（少し薄めの白） */
+  color: rgba(255, 255, 255, 0.8);
+  
+  /* 上余白（リンクテキストとの間隔） */
+  margin-top: 2px;
+  
+  /* 行の高さ */
+  line-height: 1.3;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.02em;
+  
+  /* フォントファミリー（劇団名と同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .navigation {
+    padding: 2px 25px;
+  }
+  
+  .nav-container {
+    padding: 0 40px 0 40px;
+  }
+  
+  .nav-logo-text-label {
+    font-size: 26px;
+  }
+  
+  .nav-link {
+    font-size: 18px;
+    padding: 3px 0;
+  }
+  
+  .nav-menu {
+    margin-right: 90px; /* タブレットでは少し控えめに */
+  }
+  
+  .nav-menu-divider {
+    margin: 0 15px;
+    height: 16px;
+  }
 }
 
 /* レスポンシブ対応：小さな画面の場合 */
 @media (max-width: 768px) {
-  /* ナビゲーションのパディングを減らす */
   .navigation {
-    padding: 12px 15px;
+    padding: 2px 20px;
   }
   
-  /* ロゴテキストのサイズを小さく */
-  .logo-text {
-    font-size: 1rem;
+  .nav-container {
+    padding: 0 30px 0 30px;
   }
   
-  /* メニュー項目間の間隔を減らす */
-  .nav-menu {
-    gap: 20px;
+  /* テキストロゴのサイズ */
+  .nav-logo-text-label {
+    font-size: 24px;
   }
   
-  /* リンクのフォントサイズを小さく */
+  /* 区切り線のマージンを減らす */
+  .nav-menu-divider {
+    margin: 0 12px;
+    height: 14px;
+  }
+  
+  /* リンクのフォントサイズ */
   .nav-link {
-    font-size: 0.9rem;
+    font-size: 17px;
+    padding: 3px 0;
+  }
+  
+  .nav-menu {
+    margin-right: 60px; /* モバイルではさらに控えめに */
+  }
+  
+  .nav-link-note {
+    font-size: 0.65rem;
   }
 }
 
+/* レスポンシブ対応：非常に小さな画面の場合 */
+@media (max-width: 480px) {
+  .navigation {
+    padding: 2px 15px;
+  }
+  
+  .nav-container {
+    padding: 0 20px 0 20px;
+  }
+  
+  /* テキストロゴのサイズ */
+  .nav-logo-text-label {
+    font-size: 22px;
+  }
+  
+  /* 区切り線のマージンをさらに減らす */
+  .nav-menu-divider {
+    margin: 0 8px;
+    height: 15px;
+  }
+  
+  /* リンクのフォントサイズ */
+  .nav-link {
+    font-size: 16px;
+    padding: 4px 0;
+  }
+  
+  .nav-menu {
+    margin-right: 30px; /* 非常に小さな画面ではさらに控えめに */
+  }
+  
+  .nav-link-note {
+    font-size: 0.6rem;
+  }
+}

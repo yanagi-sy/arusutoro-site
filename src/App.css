@@ -1,60 +1,130 @@
-/* Appコンポーネントのスタイル */
+/**
+ * App.css（アプリケーション全体のスタイル）
+ * 
+ * Appコンポーネントで使用されるスタイルを定義します。
+ * 主に、全ページ共通の背景画像の設定を行います。
+ */
 
-/* アプリケーション全体の背景画像ラッパー */
+/* 
+  アプリケーション全体の背景画像ラッパー
+  .app-backgroundクラスは、App.jsxの<div className="app-background">に適用されます。
+*/
 .app-background {
-  /* 背景画像を設定 */
-  /* 実際の画像URLに差し替えてください */
-  /* 例: background-image: url('https://example.com/background.jpg'); */
-  /* またはローカルファイル: background-image: url('./assets/images/background.jpg'); */
+  /* 
+    背景画像を設定
+    注意: 現在はプレースホルダーです。実際の画像URLに差し替えてください。
+    
+    例（外部URL）: 
+    background-image: url('https://example.com/background.jpg');
+    
+    例（ローカルファイル）: 
+    background-image: url('./assets/images/background.jpg');
+  */
   background-image: url('ここに画像URLを指定してください');
   
-  /* 背景画像のサイズ設定（画面全体をカバー） */
+  /* 
+    背景画像のサイズ設定
+    cover: 画面全体をカバーするように拡大・縮小（アスペクト比を維持）
+  */
   background-size: cover;
   
-  /* 背景画像の位置（中央配置） */
+  /* 
+    背景画像の位置
+    center: 中央配置（画像の中心が要素の中心に来る）
+  */
   background-position: center;
   
-  /* 背景画像の繰り返しなし */
+  /* 
+    背景画像の繰り返し
+    no-repeat: 繰り返さない（1枚の画像のみ表示）
+  */
   background-repeat: no-repeat;
   
-  /* 背景を固定（スクロールしても動かない） */
+  /* 
+    背景の固定
+    fixed: スクロールしても背景画像が動かない（視差効果）
+  */
   background-attachment: fixed;
   
-  /* 最小高さを確保（コンテンツが少なくても背景が表示される） */
+  /* 
+    最小高さ
+    100vh: ビューポートの高さいっぱい（画面の高さいっぱい）
+    コンテンツが少なくても背景が表示されるようにする
+  */
   min-height: 100vh;
   
-  /* 幅を全画面に */
+  /* 幅: 全画面（100%） */
   width: 100%;
   
-  /* 位置指定（背景レイヤーとして機能） */
+  /* 
+    位置指定
+    relative: 相対位置（子要素の絶対位置の基準点になる）
+  */
   position: relative;
+  
+  /* 
+    横方向のオーバーフロー
+    hidden: 画面からはみ出た画像を確実に隠す（横スクロールバーを表示しない）
+  */
+  overflow-x: hidden;
 }
 
-/* 背景画像の上にレイヤーを重ねる場合（画像が強すぎる場合の調整用） */
+/* 
+  背景画像の上にレイヤーを重ねる場合（画像が強すぎる場合の調整用）
+  ::before疑似要素: 要素の前にコンテンツを追加（ここではオーバーレイ用）
+*/
 .app-background::before {
-  /* 疑似要素でオーバーレイを作成 */
+  /* 
+    疑似要素のコンテンツ
+    空文字列: コンテンツは表示しないが、疑似要素を有効化するために必要
+  */
   content: '';
   
-  /* 位置を背景画像と同じにする */
+  /* 
+    位置を背景画像と同じにする
+    fixed: 固定位置（スクロールしても動かない）
+    top/left/right/bottom: 0 - 画面全体をカバー
+  */
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   
-  /* 背景色のオーバーレイ（必要に応じて調整） */
-  /* 画像の可視性を下げたい場合は、rgbaの値を調整 */
-  background-color: rgba(0, 0, 0, 0.1); /* 10%の黒オーバーレイ（必要に応じて変更） */
+  /* 
+    背景色のオーバーレイ
+    rgba(0, 0, 0, 0.1): 10%の黒オーバーレイ
+    画像の可視性を下げたい場合は、最後の数値（0.1）を大きくする
+    例: 0.2 = 20%、0.3 = 30%
+  */
+  background-color: rgba(0, 0, 0, 0.1);
   
-  /* z-indexで背景画像の上、コンテンツの下に配置 */
+  /* 
+    z-index: レイヤーの順序
+    0: 背景画像の上、コンテンツの下に配置
+  */
   z-index: 0;
   
-  /* ポインターイベントを無効化（コンテンツをクリックできるように） */
+  /* 
+    ポインターイベントを無効化
+    none: マウス操作を無効化（下のコンテンツをクリックできるようにする）
+  */
   pointer-events: none;
 }
 
-/* すべての子要素を背景の上に表示 */
-.app-background > * {
+/* 
+  すべての子要素を背景の上に表示（Navigationを除外）
+  > *:not(.navigation): 直接の子要素のうち、.navigationクラス以外のすべて
+*/
+.app-background > *:not(.navigation) {
+  /* 
+    位置指定
+    relative: 相対位置（z-indexを有効にするために必要）
+  */
   position: relative;
+  /* 
+    z-index: レイヤーの順序
+    1: 背景画像やオーバーレイの上に表示
+  */
   z-index: 1;
 }

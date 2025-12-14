@@ -1,25 +1,27 @@
-// AboutSectionコンポーネント
-// 劇団紹介セクション（テキスト中心のUI）
+// AboutSectionコンポーネント（口上セクション）
+// 劇団紹介セクション（和紙の紙面のようなUI）
+// 後から文言を差し替えやすい構造にする
 import './AboutSection.css'
 
 function AboutSection() {
+  // 口上のテキスト（後から差し替え可能）
+  const kujoText = [
+    '劇團 或素翔鷺は、',
+    '言葉と身体、沈黙と緊張のあわいに',
+    '刹那の像を立ち上げるために集った劇団である。'
+  ]
+
   return (
     <section className="about">
-      {/* コンテンツを中央に配置し、最大幅を制限するコンテナ */}
+      {/* 和紙の紙面のようなコンテナ */}
       <div className="about-container">
-        {/* 見出し */}
-        <h2 className="about-title">劇団について</h2>
-        
-        {/* 本文（ダミーテキスト） */}
+        {/* 口上のテキスト（文学的・詩的、簡潔に） */}
         <div className="about-content">
-          <p className="about-text">
-            ここには劇団の紹介文が入ります。後で実際の内容に差し替えます。
-            文章量が増えても崩れないように、適切な幅と余白を設定しています。
-          </p>
-          <p className="about-text">
-            複数の段落にも対応できる構造になっています。
-            テキストは読みやすい最大幅に制限され、中央に配置されます。
-          </p>
+          {kujoText.map((line, index) => (
+            <p key={index} className="about-text">
+              {line}
+            </p>
+          ))}
         </div>
       </div>
     </section>
@@ -27,4 +29,3 @@ function AboutSection() {
 }
 
 export default AboutSection
-

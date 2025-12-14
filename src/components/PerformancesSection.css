@@ -2,17 +2,14 @@
 
 /* セクション全体の設定 */
 .performances {
-  /* 背景色（半透明の白 - 背景画像が見えるように） */
-  background-color: rgba(255, 255, 255, 0.85); /* 85%の白、15%の透過 */
+  /* 背景色（白〜生成り、和紙のような色） */
+  background-color: #faf9f6; /* 生成りがかった白 */
   
   /* 上下に十分な余白を設定（舞台美術的なレイヤー感を出すため多めに） */
   padding: 100px 20px;
   
   /* 最小高さを確保 */
   min-height: 400px;
-  
-  /* 背景画像が見えるように半透明にする */
-  backdrop-filter: blur(2px); /* 背景を少しぼかして可読性を向上（オプション） */
 }
 
 /* コンテンツコンテナ */
@@ -25,18 +22,6 @@
   
   /* 幅が狭い場合の余白確保 */
   width: 100%;
-  
-  /* コンテンツの背景（さらに白くして可読性を確保） */
-  background-color: rgba(255, 255, 255, 0.95);
-  
-  /* パディングを追加（コンテンツエリアを明確に） */
-  padding: 50px 40px;
-  
-  /* 角を丸く */
-  border-radius: 12px;
-  
-  /* 影を付けて立体感を出す */
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* セクション見出し */
@@ -50,14 +35,20 @@
   /* 中央寄せ */
   text-align: center;
   
-  /* 下余白（グリッドとの間隔） */
-  margin-bottom: 50px;
+  /* 下余白（グリッドとの間隔、しっかり取る） */
+  margin-bottom: 60px;
   
   /* 上余白 */
   margin-top: 0;
   
-  /* 色 */
-  color: #333333;
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
 }
 
 /* 公演カードのグリッドコンテナ */
@@ -65,8 +56,8 @@
   /* グリッドレイアウトを使用 */
   display: grid;
   
-  /* グリッドの間隔（gap）を設定 */
-  gap: 30px;
+  /* グリッドの間隔（gap）を設定（余白をしっかり取る） */
+  gap: 40px;
   
   /* レスポンシブ対応：
      - モバイル（小さい画面）：1列
@@ -81,27 +72,38 @@
   }
 }
 
-/* 公演カードのスタイル */
-.performance-card {
-  /* 背景色（白） */
-  background-color: #ffffff;
-  
-  /* パディング（カード内の余白） */
-  padding: 30px;
-  
-  /* 角を少し丸く（見た目を柔らかく） */
-  border-radius: 8px;
-  
-  /* 影を付けて立体感を出す */
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  
-  /* ホバー時の効果（オプション） */
-  transition: box-shadow 0.3s ease;
+/* 大画面では3列にする（オプション） */
+@media (min-width: 1200px) {
+  .performances-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
-/* カードホバー時の効果（オプション） */
+/* 公演カードのスタイル（紙UI） */
+.performance-card {
+  /* 背景色（白、和紙の紙面のような印象） */
+  background-color: #ffffff;
+  
+  /* パディング（カード内の余白、しっかり取る） */
+  padding: 40px 35px;
+  
+  /* 角をやや丸く（和紙の紙面のような柔らかさ） */
+  border-radius: 8px;
+  
+  /* 影をごく薄く付けて、紙が置かれている印象を出す */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  
+  /* ホバー時の効果（控えめに） */
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* カードホバー時の効果（控えめに） */
 .performance-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  /* 影を少し濃くする */
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+  
+  /* わずかに浮き上がる印象 */
+  transform: translateY(-2px);
 }
 
 /* カード内のタイトル */
@@ -110,7 +112,7 @@
   font-size: 1.5rem;
   
   /* 太字 */
-  font-weight: bold;
+  font-weight: 700;
   
   /* 下余白（他の情報との間隔） */
   margin-bottom: 20px;
@@ -118,55 +120,211 @@
   /* 上余白 */
   margin-top: 0;
   
-  /* 色 */
-  color: #333333;
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
 }
 
-/* カード内の情報（日時・会場など） */
-.card-info {
-  /* 下余白（情報項目間の間隔） */
-  margin-bottom: 12px;
+/* 上演日時 */
+.card-date {
+  /* フォントサイズ */
+  font-size: 0.95rem;
   
-  /* 最後の項目の下余白は不要 */
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 下余白（あらすじとの間隔） */
+  margin-bottom: 20px;
+  
+  /* 上余白 */
   margin-top: 0;
   
-  /* フォントサイズ */
-  font-size: 1rem;
-}
-
-/* 情報のラベル（「日時：」「会場：」など） */
-.card-label {
-  /* 太字 */
-  font-weight: bold;
-  
-  /* 色 */
+  /* 色（少し薄め） */
   color: #555555;
-}
-
-/* 情報の値 */
-.card-value {
-  /* 色 */
-  color: #333333;
-}
-
-/* カード内の説明文 */
-.card-description {
-  /* 上余白（情報と説明文の間隔） */
-  margin-top: 20px;
   
-  /* 下余白 */
-  margin-bottom: 0;
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+}
+
+/* カード内のあらすじ（短い一文） */
+.card-synopsis {
+  /* 上余白（日時とあらすじの間隔） */
+  margin-top: 0;
+  
+  /* 下余白（リンクとの間隔） */
+  margin-bottom: 25px;
   
   /* フォントサイズ */
   font-size: 1rem;
   
   /* 行間（読みやすさを向上） */
-  line-height: 1.7;
+  line-height: 1.9;
   
-  /* 色 */
-  color: #666666;
+  /* 色（墨色、少し薄め） */
+  color: #444444;
   
   /* 単語の折り返しを許可 */
   word-wrap: break-word;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.02em;
 }
 
+/* 「詳細を見る」リンク */
+.card-link {
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* インライン要素として表示 */
+  display: inline-block;
+  
+  /* フォントサイズ */
+  font-size: 0.9rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（墨色、控えめに） */
+  color: #2a2a2a;
+  
+  /* 下線を追加（控えめに） */
+  border-bottom: 1px solid #2a2a2a;
+  
+  /* パディング（クリック領域を広げる） */
+  padding-bottom: 2px;
+  
+  /* ホバー時の色変化 */
+  transition: color 0.3s ease, border-color 0.3s ease;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+}
+
+/* リンクホバー時のスタイル */
+.card-link:hover {
+  /* ホバー時の色（少し薄く） */
+  color: #666666;
+  
+  /* 下線の色も変更 */
+  border-bottom-color: #666666;
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .performances {
+    padding: 80px 20px;
+  }
+  
+  .performances-title {
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+  }
+  
+  .performances-grid {
+    gap: 35px;
+  }
+  
+  .performance-card {
+    padding: 35px 30px;
+  }
+  
+  .card-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .performances {
+    padding: 60px 15px;
+  }
+  
+  .performances-title {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+  }
+  
+  .performances-grid {
+    gap: 30px;
+  }
+  
+  .performance-card {
+    padding: 30px 25px;
+    border-radius: 6px;
+  }
+  
+  .card-title {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+  
+  .card-date {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+  
+  .card-synopsis {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+  
+  .card-link {
+    font-size: 0.85rem;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .performances {
+    padding: 50px 10px;
+  }
+  
+  .performances-title {
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+  }
+  
+  .performances-grid {
+    gap: 25px;
+  }
+  
+  .performance-card {
+    padding: 25px 20px;
+    border-radius: 4px;
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .card-date {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+  
+  .card-synopsis {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+  
+  .card-link {
+    font-size: 0.8rem;
+  }
+}

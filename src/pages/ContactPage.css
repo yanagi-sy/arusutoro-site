@@ -1,0 +1,327 @@
+/* ContactPageコンポーネントのスタイル */
+
+/* ページ全体 */
+.contact-page {
+  /* 背景色（白〜生成り、和紙のような色） */
+  background-color: #faf9f6;
+  
+  /* 最小高さを確保 */
+  min-height: 100vh;
+  
+  /* パディング */
+  padding: 100px 20px;
+}
+
+/* ページヘッダー */
+.contact-header {
+  /* 最大幅を設定 */
+  max-width: 700px;
+  
+  /* 中央寄せ */
+  margin: 0 auto 60px;
+  
+  /* 中央寄せ */
+  text-align: center;
+}
+
+/* ページタイトル */
+.contact-page-title {
+  /* フォントサイズ */
+  font-size: 2.5rem;
+  
+  /* フォントウェイト（太字） */
+  font-weight: 700;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* 下余白 */
+  margin: 0 0 15px;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+}
+
+/* ページサブタイトル */
+.contact-page-subtitle {
+  /* フォントサイズ */
+  font-size: 1.1rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（少し薄め） */
+  color: #666666;
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+}
+
+/* 問い合わせコンテンツ */
+.contact-content {
+  /* 最大幅を設定 */
+  max-width: 700px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+}
+
+/* 問い合わせフォーム */
+.contact-form {
+  /* 背景色（白、和紙の紙面のような印象） */
+  background-color: #ffffff;
+  
+  /* パディング */
+  padding: 60px 50px;
+  
+  /* 角をやや丸く */
+  border-radius: 8px;
+  
+  /* 影をごく薄く付ける */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* フォームグループ */
+.contact-form-group {
+  /* 下余白 */
+  margin-bottom: 30px;
+}
+
+/* フォームラベル */
+.contact-form-label {
+  /* ブロック要素として表示 */
+  display: block;
+  
+  /* フォントサイズ */
+  font-size: 1rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* 下余白 */
+  margin-bottom: 8px;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+}
+
+/* 必須マーク */
+.contact-form-required {
+  /* 色（赤） */
+  color: #cc0000;
+  
+  /* マージン */
+  margin-left: 4px;
+}
+
+/* フォーム入力欄 */
+.contact-form-input,
+.contact-form-textarea {
+  /* 幅を100%に */
+  width: 100%;
+  
+  /* パディング */
+  padding: 12px 15px;
+  
+  /* ボーダー */
+  border: 1px solid #cccccc;
+  
+  /* 角を丸く */
+  border-radius: 4px;
+  
+  /* フォントサイズ */
+  font-size: 1rem;
+  
+  /* 行間 */
+  line-height: 1.6;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* 背景色（白） */
+  background-color: #ffffff;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.02em;
+  
+  /* フォーカス時のアウトライン */
+  outline: none;
+  
+  /* ホバー・フォーカス時の効果 */
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* テキストエリア */
+.contact-form-textarea {
+  /* リサイズを許可 */
+  resize: vertical;
+  
+  /* 最小高さ */
+  min-height: 150px;
+}
+
+/* フォーム入力欄ホバー時 */
+.contact-form-input:hover,
+.contact-form-textarea:hover {
+  /* ボーダー色を変更 */
+  border-color: #999999;
+}
+
+/* フォーム入力欄フォーカス時 */
+.contact-form-input:focus,
+.contact-form-textarea:focus {
+  /* ボーダー色を変更 */
+  border-color: #2a2a2a;
+  
+  /* 影を付ける */
+  box-shadow: 0 0 0 3px rgba(42, 42, 42, 0.1);
+}
+
+/* 送信ボタンエリア */
+.contact-form-submit {
+  /* 中央寄せ */
+  text-align: center;
+  
+  /* 上余白 */
+  margin-top: 40px;
+}
+
+/* 送信ボタン */
+.contact-form-button {
+  /* ボタンのスタイルをリセット */
+  border: none;
+  
+  /* 背景色（墨色） */
+  background-color: #2a2a2a;
+  
+  /* 文字色（白） */
+  color: #ffffff;
+  
+  /* フォントサイズ */
+  font-size: 1.1rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* パディング */
+  padding: 14px 50px;
+  
+  /* 角を丸く */
+  border-radius: 4px;
+  
+  /* カーソルをポインターに */
+  cursor: pointer;
+  
+  /* ホバー時の効果 */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+}
+
+/* 送信ボタンホバー時 */
+.contact-form-button:hover {
+  /* 背景色を変更 */
+  background-color: #1a1a1a;
+  
+  /* わずかに浮き上がる印象 */
+  transform: translateY(-2px);
+}
+
+/* 送信ボタンアクティブ時 */
+.contact-form-button:active {
+  /* わずかに沈む印象 */
+  transform: translateY(0);
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .contact-page {
+    padding: 80px 20px;
+  }
+  
+  .contact-page-title {
+    font-size: 2.2rem;
+  }
+  
+  .contact-form {
+    padding: 50px 40px;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .contact-page {
+    padding: 60px 15px;
+  }
+  
+  .contact-page-title {
+    font-size: 1.8rem;
+  }
+  
+  .contact-header {
+    margin-bottom: 40px;
+  }
+  
+  .contact-form {
+    padding: 40px 30px;
+    border-radius: 6px;
+  }
+  
+  .contact-form-group {
+    margin-bottom: 25px;
+  }
+  
+  .contact-form-button {
+    font-size: 1rem;
+    padding: 12px 40px;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .contact-page {
+    padding: 50px 10px;
+  }
+  
+  .contact-page-title {
+    font-size: 1.6rem;
+  }
+  
+  .contact-form {
+    padding: 30px 20px;
+    border-radius: 4px;
+  }
+  
+  .contact-form-group {
+    margin-bottom: 20px;
+  }
+  
+  .contact-form-button {
+    font-size: 0.95rem;
+    padding: 10px 30px;
+    width: 100%;
+  }
+}
+

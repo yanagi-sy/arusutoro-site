@@ -1,6 +1,43 @@
 .hero {
+    position: relative;
+    width: 100%;
     height: 100vh;
+  
+    /* 背景画像の基本設定 */
     background-size: cover;
     background-position: center;
+    background-repeat: no-repeat;
+  
+    /* はみ出し防止（重要） */
+    overflow: hidden;
+  }
+  
+  /* 縦書きの劇団名 */
+  .hero-title {
+    position: absolute;
+  
+    /* ← ここが「右すぎる」の修正ポイント */
+    left: 18%;
+  
+    top: 50%;
+    transform: translateY(-50%);
+  
+    writing-mode: vertical-rl;
+    font-size: 56px;
+    color: #111;
+  
+    font-family: 'Shippori Mincho B1', serif;
+  }
+  
+  /* ローマ字 */
+  .hero-subtitle {
+    position: absolute;
+    left: 22%;
+    top: 50%;
+    transform: translateY(-50%);
+  
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: #333;
   }
   

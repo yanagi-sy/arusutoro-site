@@ -1,0 +1,244 @@
+/* BunkouPageコンポーネントのスタイル */
+
+/* ページ全体 */
+.bunkou-page {
+  /* 背景色（白〜生成り、和紙のような色） */
+  background-color: #faf9f6;
+  
+  /* 最小高さを確保 */
+  min-height: 100vh;
+  
+  /* パディング */
+  padding: 100px 20px;
+}
+
+/* ページヘッダー */
+.bunkou-header {
+  /* 最大幅を設定 */
+  max-width: 800px;
+  
+  /* 中央寄せ */
+  margin: 0 auto 60px;
+  
+  /* 中央寄せ */
+  text-align: center;
+}
+
+/* ページタイトル */
+.bunkou-page-title {
+  /* フォントサイズ */
+  font-size: 2.5rem;
+  
+  /* フォントウェイト（太字） */
+  font-weight: 700;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* 下余白 */
+  margin: 0 0 15px;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+}
+
+/* ページサブタイトル */
+.bunkou-page-subtitle {
+  /* フォントサイズ */
+  font-size: 1.1rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（少し薄め） */
+  color: #666666;
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+}
+
+/* 文抗時代の説明コンテンツ */
+.bunkou-content {
+  /* 最大幅を設定 */
+  max-width: 800px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+}
+
+/* テキストコンテナ（和紙の紙面のような見た目） */
+.bunkou-text-container {
+  /* 背景色（白、和紙の紙面のような印象） */
+  background-color: #ffffff;
+  
+  /* パディング */
+  padding: 60px 50px;
+  
+  /* 角をやや丸く */
+  border-radius: 8px;
+  
+  /* 影をごく薄く付ける */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  
+  /* 下余白 */
+  margin-bottom: 40px;
+}
+
+/* テキスト行 */
+.bunkou-text-line {
+  /* フォントサイズ */
+  font-size: 1.15rem;
+  
+  /* 行間（読みやすさを向上、文学的・詩的な印象） */
+  line-height: 2.2;
+  
+  /* 段落の下余白 */
+  margin-bottom: 0;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色（墨色、和紙に書かれた文字のような） */
+  color: #2a2a2a;
+  
+  /* テキストの整列（左揃え、文学的・詩的な印象） */
+  text-align: left;
+  
+  /* 文章量が増えても崩れないように、単語の折り返しを許可 */
+  word-wrap: break-word;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔（読みやすさと文学的印象のバランス） */
+  letter-spacing: 0.05em;
+}
+
+/* 空行の処理 */
+.bunkou-text-line:empty {
+  /* 空行の場合は高さを確保 */
+  height: 1.5em;
+}
+
+/* 外部リンクセクション */
+.bunkou-links {
+  /* 背景色（白、和紙の紙面のような印象） */
+  background-color: #ffffff;
+  
+  /* パディング */
+  padding: 40px 50px;
+  
+  /* 角をやや丸く */
+  border-radius: 8px;
+  
+  /* 影をごく薄く付ける */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  
+  /* 中央寄せ */
+  text-align: center;
+}
+
+/* 外部リンクの注記 */
+.bunkou-links-note {
+  /* フォントサイズ */
+  font-size: 1rem;
+  
+  /* 行間 */
+  line-height: 1.8;
+  
+  /* 色（少し薄め） */
+  color: #777777;
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .bunkou-page {
+    padding: 80px 20px;
+  }
+  
+  .bunkou-page-title {
+    font-size: 2.2rem;
+  }
+  
+  .bunkou-text-container,
+  .bunkou-links {
+    padding: 50px 40px;
+  }
+  
+  .bunkou-text-line {
+    font-size: 1.1rem;
+    line-height: 2.0;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .bunkou-page {
+    padding: 60px 15px;
+  }
+  
+  .bunkou-page-title {
+    font-size: 1.8rem;
+  }
+  
+  .bunkou-header {
+    margin-bottom: 40px;
+  }
+  
+  .bunkou-text-container,
+  .bunkou-links {
+    padding: 40px 30px;
+    border-radius: 6px;
+  }
+  
+  .bunkou-text-line {
+    font-size: 1rem;
+    line-height: 1.9;
+    letter-spacing: 0.03em;
+  }
+  
+  .bunkou-links {
+    margin-top: 30px;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .bunkou-page {
+    padding: 50px 10px;
+  }
+  
+  .bunkou-page-title {
+    font-size: 1.6rem;
+  }
+  
+  .bunkou-text-container,
+  .bunkou-links {
+    padding: 30px 20px;
+    border-radius: 4px;
+  }
+  
+  .bunkou-text-line {
+    font-size: 0.95rem;
+    line-height: 1.8;
+  }
+}
+

@@ -1,0 +1,298 @@
+/* Footerコンポーネントのスタイル */
+
+/* フッター全体 */
+.footer {
+  /* 背景色（ヘッダーと反転：白系） */
+  background-color: #ffffff; /* ヘッダーと反転 */
+  
+  /* 横幅いっぱいに表示 */
+  width: 100%;
+  
+  /* 余白をしっかり取る（縦幅を狭める） */
+  padding: 30px 20px 25px;
+  
+  /* 主張しすぎない落ち着いたデザイン */
+  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* フッターコンテナ（左・中央・右揃え） */
+.footer-container {
+  /* 最大幅を設定（狭める） */
+  max-width: 1200px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+  
+  /* 横並びで表示（左・中央・右に配置） */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  
+  /* 各要素の間隔 */
+  gap: 20px;
+  
+  /* 幅 */
+  width: 100%;
+  padding: 0 20px;
+}
+
+/* 劇団名グループ（左揃え） */
+.footer-company-group {
+  /* 縦並びで表示（劇団名の下にローマ字） */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  /* 左揃え */
+  text-align: left;
+}
+
+/* 劇団名（日本語） */
+.footer-company-name {
+  /* フォントサイズ */
+  font-size: 1.8rem;
+  
+  /* フォントウェイト（太字） */
+  font-weight: 700;
+  
+  /* 色（ヘッダーと反転：暗い色） */
+  color: #2a2a2a; /* 墨色 */
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* 下余白（ローマ字との間隔） */
+  margin-bottom: 5px;
+  
+  /* フォントファミリー（ヘッダーと同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+  
+  /* 影は不要（白背景のため） */
+  text-shadow: none;
+}
+
+/* ローマ字表記（補助、控えめに、ふりがなのように下に配置） */
+.footer-company-name-roman {
+  /* フォントサイズ */
+  font-size: 0.9rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（やや控えめな暗い色） */
+  color: rgba(42, 42, 42, 0.7); /* 墨色の控えめなバージョン */
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* 左側に少し余白を追加（右にずらす） */
+  padding-left: 32px;
+  
+  /* フォントファミリー（ヘッダーと同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.15em;
+  
+  /* 影は不要（白背景のため） */
+  text-shadow: none;
+}
+
+/* SNSリンクセクション（中央揃え） */
+.footer-sns {
+  /* フレックスボックスで横並び */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  /* SNSリンク間の間隔 */
+  gap: 20px;
+  
+  /* 中央揃え */
+  flex: 1;
+  text-align: center;
+}
+
+/* SNSリンク */
+.footer-sns-link {
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* 色（ヘッダーと反転：暗い色） */
+  color: #2a2a2a; /* 墨色 */
+  
+  /* フォントサイズ */
+  font-size: 0.95rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* ホバー時の色変化 */
+  transition: color 0.3s ease, opacity 0.3s ease;
+  
+  /* フォントファミリー（ヘッダーと同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+  
+  /* 影は不要（白背景のため） */
+  text-shadow: none;
+  
+  /* パディング（クリック領域を広げる） */
+  padding: 5px 0;
+}
+
+/* SNSリンクホバー時 */
+.footer-sns-link:hover {
+  /* ホバー時の色（少し薄めの暗い色） */
+  color: #666666;
+  
+  /* 透明度を少し下げる */
+  opacity: 0.8;
+}
+
+/* コピーライト（控えめに、右揃え） */
+.footer-copyright {
+  /* フォントサイズ */
+  font-size: 0.85rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（やや控えめな暗い色） */
+  color: rgba(42, 42, 42, 0.6); /* 墨色の控えめなバージョン */
+  
+  /* マージンをリセット */
+  margin: 0;
+  
+  /* 右揃え */
+  text-align: right;
+  
+  /* フォントファミリー（ヘッダーと同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+  
+  /* 影は不要（白背景のため） */
+  text-shadow: none;
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .footer {
+    padding: 25px 20px 20px;
+  }
+  
+  .footer-container {
+    max-width: 100%;
+    gap: 18px;
+    padding: 0 15px;
+  }
+  
+  .footer-company-name {
+    font-size: 1.6rem;
+  }
+  
+  .footer-company-name-roman {
+    font-size: 0.85rem;
+  }
+  
+  .footer-sns {
+    gap: 18px;
+  }
+  
+  .footer-sns-link {
+    font-size: 0.9rem;
+  }
+  
+  .footer-copyright {
+    font-size: 0.8rem;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .footer {
+    padding: 20px 15px 18px;
+  }
+  
+  .footer-container {
+    max-width: 100%;
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 10px;
+  }
+  
+  .footer-company-group {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .footer-company-name {
+    font-size: 1.4rem;
+    margin-bottom: 5px;
+  }
+  
+  .footer-company-name-roman {
+    font-size: 0.8rem;
+  }
+  
+  .footer-sns {
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .footer-sns-link {
+    font-size: 0.85rem;
+  }
+  
+  .footer-copyright {
+    font-size: 0.75rem;
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .footer {
+    padding: 18px 10px 15px;
+  }
+  
+  .footer-container {
+    gap: 15px;
+    padding: 0 5px;
+  }
+  
+  .footer-company-name {
+    font-size: 1.2rem;
+    margin-bottom: 4px;
+  }
+  
+  .footer-company-name-roman {
+    font-size: 0.75rem;
+  }
+  
+  .footer-sns {
+    gap: 15px;
+  }
+  
+  .footer-sns-link {
+    font-size: 0.8rem;
+  }
+  
+  .footer-copyright {
+    font-size: 0.7rem;
+  }
+}
+
