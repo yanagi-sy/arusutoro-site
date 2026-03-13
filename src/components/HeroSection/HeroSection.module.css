@@ -1,0 +1,279 @@
+/* HeroSectionコンポーネントのスタイル */
+
+/* ============================================
+   基本構造（レイアウト・背景）
+   ============================================ */
+.hero {
+  /* サイズ設定 */
+  height: 100vh;
+  width: 100%;
+  min-height: 100vh;
+
+  /* 位置指定（子要素の配置に必要） */
+  position: relative;
+
+  /* レイアウト（フレックスボックス） */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  /* パディング（テキスト位置調整） */
+  padding-left: 10%;
+
+  /* オーバーフロー制御 */
+  overflow: hidden;
+
+  /* z-index設定 */
+  z-index: 1;
+
+  /* 背景画像の設定 */
+  /* background-size, background-position, background-repeat はインラインスタイルで制御 */
+}
+
+/* 背景画像と次のセクションの境目にグラデーションを追加 */
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 200px;
+  z-index: 1;
+  pointer-events: none;
+
+  /* グラデーション（透明から次のセクションの背景色へ） */
+  background: linear-gradient(
+    to bottom,
+    rgba(247, 245, 241, 0) 0%,
+    rgba(247, 245, 241, 0.3) 40%,
+    rgba(247, 245, 241, 0.7) 70%,
+    rgba(247, 245, 241, 1) 100%
+  );
+}
+
+/* ============================================
+   テキストコンテンツ
+   ============================================ */
+.heroContent {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  margin-top: 6em; /* さらに3行分下に移動（1.5em + 4.5em = 6em） */
+}
+
+/* 縦書きの劇団名タイトル */
+.heroTitleVertical {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  font-size: 73px; /* 2ポイントアップ（71px → 73px） */
+  font-weight: 700;
+  color: #111;
+  letter-spacing: 0.1em;
+  word-spacing: -0.6em;
+  line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.5);
+
+  /* アニメーション */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroTitleFadeIn 1.5s ease-out forwards;
+  animation-delay: 0.3s;
+}
+
+/* ローマ字表記 */
+.heroSubtitleRoman {
+  writing-mode: horizontal-tb;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  font-size: 22px; /* 2ポイントアップ（20px → 22px） */
+  font-weight: 400;
+  color: #111;
+  opacity: 0.7;
+  letter-spacing: 0.15em;
+  line-height: 1.5;
+  margin: 0;
+  margin-left: 10px;
+  margin-top: -10px;
+  padding: 0;
+  text-decoration: none;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+
+  /* アニメーション */
+  opacity: 0;
+  animation: heroSubtitleFadeIn 1.2s ease-out forwards;
+  animation-delay: 0.6s;
+}
+
+/* キャッチコピー */
+.heroCatchphrase {
+  writing-mode: horizontal-tb;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  font-size: 26px;
+  font-weight: 400;
+  font-style: italic;
+  color: #111;
+  opacity: 0.8;
+  letter-spacing: 0.1em;
+  line-height: 1.6;
+  margin: 0;
+  margin-left: calc(10px + 3ch); /* 右に3文字分移動 */
+  margin-top: calc(10px + 1.5em); /* 3行分上に移動（4.5em → 1.5em） */
+  padding: 0;
+  text-decoration: none;
+  text-shadow: 0 1px 4px rgba(255, 255, 255, 0.5);
+
+  /* アニメーション */
+  opacity: 0;
+  animation: heroCatchphraseFadeIn 1.2s ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+/* ============================================
+   アニメーション定義
+   ============================================ */
+@keyframes heroTitleFadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroSubtitleFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes heroCatchphraseFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0.8;
+  }
+}
+
+/* ============================================
+   レスポンシブ対応
+   ============================================ */
+
+/* タブレットサイズ */
+@media (max-width: 1024px) {
+  .hero {
+    padding-left: 8%;
+  }
+
+  .heroContent {
+    margin-top: calc(6em - 1em); /* 一文字分上に移動（-1em） */
+    transform: translateY(-5%); /* さらに5％上に移動 */
+  }
+
+  .heroTitleVertical {
+    font-size: 70px; /* 5ポイント拡大（65px → 70px） */
+  }
+
+  .heroSubtitleRoman {
+    font-size: 22px; /* 5ポイント拡大（17px → 22px） */
+    font-weight: 600; /* 視認性向上 */
+    letter-spacing: 0.1em; /* 少し詰める */
+  }
+
+  .heroCatchphrase {
+    font-size: 25px;
+    margin-left: calc(10px + 3ch + 1ch); /* X軸に+1移動 */
+    margin-top: calc(10px + 1.5em - 2px); /* Y軸に-2移動 */
+  }
+}
+
+/* モバイルサイズ（768px以下） */
+@media (max-width: 768px) {
+  /* レイアウト・背景調整 */
+  .hero {
+    padding-left: 5%;
+    justify-content: flex-start;
+    /* background-size, background-position はインラインスタイルで制御 */
+  }
+
+  /* テキスト位置調整 */
+  .heroContent {
+    margin-top: calc(44px + 10vh + 6em - 1em); /* 一文字分上に移動（-1em） */
+    transform: translateY(-5%); /* さらに5％上に移動 */
+  }
+
+  /* グラデーション強化 */
+  .hero::after {
+    height: 260px;
+    background: linear-gradient(
+      to bottom,
+      rgba(247, 245, 241, 0) 0%,
+      rgba(247, 245, 241, 0.35) 30%,
+      rgba(247, 245, 241, 0.78) 65%,
+      rgba(247, 245, 241, 1) 100%
+    );
+  }
+
+  /* テキストサイズ調整 */
+  .heroTitleVertical {
+    font-size: 7px; /* 5ポイント拡大（2px → 7px） */
+    letter-spacing: 0.10em;
+    text-shadow: 0 4px 16px rgba(255, 255, 255, 0.9), 0 2px 8px rgba(255, 255, 255, 0.7), 0 1px 4px rgba(255, 255, 255, 0.8); /* text-shadowを強化（白のみ） */
+  }
+
+  .heroSubtitleRoman {
+    font-size: 10px; /* 2ポイント拡大（8px → 10px） */
+    margin-left: 8px;
+    font-weight: 600; /* 視認性向上 */
+    letter-spacing: 0.08em; /* 少し詰める（モバイルではさらに詰める） */
+    text-shadow: 0 5px 24px rgba(255, 255, 255, 1), 0 4px 18px rgba(255, 255, 255, 0.95), 0 3px 14px rgba(255, 255, 255, 0.9), 0 2px 10px rgba(255, 255, 255, 0.85), 0 1px 5px rgba(255, 255, 255, 0.9); /* text-shadowをさらに強調（白のみ、太め） */
+  }
+
+  .heroCatchphrase {
+    font-size: 15px;
+    margin-left: calc(8px + 3ch + 1ch); /* 右に3文字分移動 + X軸に+1移動 */
+    margin-top: calc(10px + 1.5em - 2px); /* 3行分上に移動 + Y軸に-2移動 */
+  }
+}
+
+/* 小画面（480px以下） */
+@media (max-width: 480px) {
+  /* 背景画像位置調整（background-size, background-position はインラインスタイルで制御） */
+
+  /* テキスト位置調整 */
+  .heroContent {
+    margin-top: calc(44px + 10vh + 6em - 1em); /* 一文字分上に移動（-1em） */
+    transform: translateY(-5%); /* さらに5％上に移動 */
+  }
+
+  /* テキストサイズ調整 */
+  .heroTitleVertical {
+    font-size: 49px; /* 5ポイント拡大（44px → 49px） */
+    letter-spacing: 0.05em;
+  }
+
+  .heroSubtitleRoman {
+    font-size: 15px; /* 5ポイント拡大（10px → 15px） */
+    margin-left: 6px;
+    font-weight: 600; /* 視認性向上 */
+    letter-spacing: 0.08em; /* 少し詰める（小画面ではさらに詰める） */
+  }
+
+  .heroCatchphrase {
+    font-size: 20px;
+    margin-left: calc(6px + 3ch + 1ch); /* 右に3文字分移動 + X軸に+1移動 */
+    margin-top: calc(10px + 1.5em - 2px); /* 3行分上に移動 + Y軸に-2移動 */
+  }
+}
+

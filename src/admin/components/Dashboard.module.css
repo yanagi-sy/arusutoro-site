@@ -1,0 +1,292 @@
+/**
+ * Dashboard スタイル
+ * 一般サイトのページ・カード・ボタントーンに合わせています。
+ */
+
+.dashboard {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 40px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  margin: 0 0 8px 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-sub, #666666);
+  margin: 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+.statCard {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.statIcon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.statContent {
+  flex: 1;
+}
+
+.statLabel {
+  font-size: 0.9rem;
+  color: var(--text-sub, #555555);
+  margin-bottom: 8px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.03em;
+}
+
+.statValue {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  margin-bottom: 8px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+.statDetail {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.statBadgeSuccess {
+  font-size: 0.75rem;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.statBadgeWarning {
+  font-size: 0.75rem;
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.statBadgeGray {
+  font-size: 0.75rem;
+  background-color: #f0f0f0;
+  color: #555555;
+  padding: 4px 8px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.section {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 32px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 32px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  margin: 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+.viewAllLink {
+  font-size: 0.95rem;
+  color: var(--text-main, #2b2b2b);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.viewAllLink:hover {
+  color: var(--accent-indigo, #9aa6b2);
+}
+
+.actionGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.actionCard {
+  background-color: #f7f5f1;
+  border: 2px dashed var(--border-soft, #d8d5cd);
+  border-radius: 8px;
+  padding: 24px;
+  text-align: center;
+  text-decoration: none;
+  color: var(--text-main, #2a2a2a);
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.actionCard:hover {
+  background-color: #f2f0ea;
+  border-color: #c7d8d2;
+  color: #1f3130;
+}
+
+.actionIcon {
+  font-size: 2rem;
+}
+
+.actionLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.03em;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.listItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background-color: #faf9f6;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-main, #2a2a2a);
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.listItem:hover {
+  background-color: #f2f0ea;
+  transform: translateX(4px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.listItemContent {
+  flex: 1;
+}
+
+.listItemTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.03em;
+}
+
+.listItemMeta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.listItemType {
+  font-size: 0.8rem;
+  background-color: #f0f0f0;
+  color: #555555;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.listItemStatus {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-weight: 600;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.listItemStatusPublished {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.listItemStatusDraft {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.listItemStatusEnded {
+  background-color: #f0f0f0;
+  color: #555555;
+}
+
+.listItemArrow {
+  font-size: 1.2rem;
+  color: var(--text-sub, #555555);
+  margin-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 20px;
+  }
+
+  .sectionHeader {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+}

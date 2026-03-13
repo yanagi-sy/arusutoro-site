@@ -1,0 +1,407 @@
+/**
+ * ReservationsPage スタイル
+ * 既存の管理者UI（カード・余白・淡い背景）に合わせています。
+ */
+
+.page {
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 32px;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  margin: 0 0 8px 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.1em;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-sub, #666666);
+  margin: 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+/* 回ごと 定員/予約数/残数 */
+.slotSummary {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+.slotSummaryTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  margin: 0 0 16px 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+.slotSummaryGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 16px;
+}
+
+.slotSummaryCard {
+  background-color: #f7f5f1;
+  border: 1px solid var(--border-soft, #d8d5cd);
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.slotSummaryCardTitle {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main, #2a2a2a);
+  margin-bottom: 4px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.slotSummaryCardSlot {
+  font-size: 0.85rem;
+  color: var(--text-sub, #555555);
+  margin-bottom: 12px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.slotSummaryCardNumbers {
+  display: flex;
+  gap: 12px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-main, #2b2b2b);
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.slotSummaryRemainingZero {
+  color: var(--accent-red, #c9a3a0);
+}
+
+/* フィルタ */
+.toolbar {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: flex-end;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.filterLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-main, #2a2a2a);
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.filterSelect {
+  min-width: 180px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-soft, #d8d5cd);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  color: var(--text-main, #2b2b2b);
+  background-color: #ffffff;
+}
+
+.filterSelect:focus {
+  outline: none;
+  border-color: var(--accent-indigo, #9aa6b2);
+}
+
+.filterInput {
+  min-width: 200px;
+  padding: 10px 12px;
+  border: 1px solid var(--border-soft, #d8d5cd);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  color: var(--text-main, #2b2b2b);
+}
+
+.filterInput:focus {
+  outline: none;
+  border-color: var(--accent-indigo, #9aa6b2);
+}
+
+.filterInput::placeholder {
+  color: var(--text-sub, #555555);
+}
+
+/* メイン：テーブル + 詳細ペイン */
+.mainContent {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.tableSection {
+  flex: 1;
+  min-width: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.table th,
+.table td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--border-soft, #d8d5cd);
+}
+
+.table th {
+  background-color: #f7f5f1;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  letter-spacing: 0.03em;
+}
+
+.table tbody tr {
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #faf9f6;
+}
+
+.rowSelected {
+  background-color: #e8f0ed !important;
+}
+
+.table td {
+  color: var(--text-main, #2b2b2b);
+}
+
+.tableEmpty {
+  text-align: center;
+  color: var(--text-sub, #666666);
+  padding: 40px !important;
+}
+
+.badgeActive {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.badgeCancelled {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 3px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  background-color: #f0f0f0;
+  color: #555555;
+}
+
+/* 詳細ペイン（右） */
+.detailPane {
+  width: 380px;
+  flex-shrink: 0;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid var(--border-soft, #d8d5cd);
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+}
+
+.detailPaneHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-soft, #d8d5cd);
+  background-color: #f7f5f1;
+}
+
+.detailPaneTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-main, #2a2a2a);
+  margin: 0;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+.detailPaneClose {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--text-sub, #555555);
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.detailPaneClose:hover {
+  background-color: #f2f0ea;
+  color: var(--text-main, #2a2a2a);
+}
+
+.detailPaneBody {
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.detailList {
+  margin: 0 0 20px 0;
+  font-size: 0.9rem;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.detailList dt {
+  font-weight: 600;
+  color: var(--text-sub, #555555);
+  margin-top: 12px;
+  margin-bottom: 4px;
+}
+
+.detailList dt:first-child {
+  margin-top: 0;
+}
+
+.detailList dd {
+  margin: 0;
+  color: var(--text-main, #2b2b2b);
+}
+
+.detailField {
+  margin-top: 20px;
+}
+
+.detailLabel {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-main, #2a2a2a);
+  margin-bottom: 8px;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+}
+
+.detailTextarea {
+  width: 100%;
+  min-height: 100px;
+  padding: 12px;
+  border: 1px solid var(--border-soft, #d8d5cd);
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  color: var(--text-main, #2b2b2b);
+  resize: vertical;
+}
+
+.detailTextarea:focus {
+  outline: none;
+  border-color: var(--accent-indigo, #9aa6b2);
+}
+
+.detailActions {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-soft, #d8d5cd);
+}
+
+.cancelButton {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  background: #f3eee2;
+  color: #2f2f2f;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.cancelButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  background: #e8e4da;
+}
+
+@media (max-width: 1024px) {
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .detailPane {
+    width: 100%;
+    max-height: 60vh;
+  }
+}
+
+@media (max-width: 768px) {
+  .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filterSelect,
+  .filterInput {
+    min-width: 0;
+  }
+
+  .slotSummaryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 12px;
+    font-size: 0.85rem;
+  }
+}

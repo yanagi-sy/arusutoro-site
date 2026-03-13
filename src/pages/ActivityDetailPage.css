@@ -1,0 +1,306 @@
+/**
+ * ActivityDetailPageコンポーネントのスタイル
+ * 
+ * 公演詳細ページのスタイルを定義します。
+ * 淡く明るい和風トーンを維持し、情報が読みやすいレイアウトにします。
+ */
+
+/* ページ全体の設定 */
+.activity-detail-page {
+  /* 背景色（--bg-base: メイン背景色、和紙のような生成り） */
+  background-color: var(--bg-base);
+  
+  /* 上下に余白を確保 */
+  padding: 120px 24px 80px;
+  
+  /* 最小高さを確保 */
+  min-height: 100vh;
+}
+
+/* エラー表示 */
+.activity-detail-error {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.activity-detail-error h1 {
+  font-size: 2rem;
+  color: #2a2a2a;
+  margin-bottom: 20px;
+}
+
+.activity-detail-error p {
+  font-size: 1rem;
+  color: #555555;
+  margin-bottom: 40px;
+}
+
+/* コンテナ（ページ中央に配置、1カラム縦レイアウト） */
+.activity-detail-container {
+  /* 最大幅を設定 */
+  max-width: 700px;
+  
+  /* 中央寄せ（ページ中央に配置） */
+  margin: 0 auto;
+  
+  /* 1カラム縦レイアウト */
+  display: flex;
+  flex-direction: column;
+}
+
+/* サムネイル画像（ページ最上部、16:9比率で自動トリミング） */
+.activity-detail-image {
+  margin-bottom: 32px;
+  border-radius: 8px;
+  overflow: hidden;
+  /* 16:9比率を維持（aspect-ratioを使用） */
+  aspect-ratio: 16 / 9;
+  width: 100%;
+  position: relative;
+}
+
+.activity-detail-img {
+  width: 100%;
+  height: 100%;
+  /* 中央寄せで自動トリミング（LINEのプロフィール画像方式） */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* ① 公演タイトル */
+.activity-detail-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin: 0 0 32px 0;
+  line-height: 1.4;
+}
+
+/* ② 日程 / 会場 */
+.activity-detail-info-section {
+  margin-bottom: 32px;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e0e6e3;
+}
+
+.activity-detail-info-row {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.activity-detail-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.activity-detail-info-label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555555;
+  min-width: 80px;
+  flex-shrink: 0;
+}
+
+.activity-detail-info-value {
+  font-size: 1rem;
+  color: #2a2a2a;
+  flex: 1;
+}
+
+/* セクション共通スタイル */
+.activity-detail-section {
+  margin-bottom: 32px;
+}
+
+.activity-detail-section-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e6e3;
+}
+
+/* ④ キャスト一覧 / ⑤ スタッフ一覧 */
+.activity-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.activity-detail-list-item {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2a2a2a;
+  padding: 8px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.activity-detail-list-item:last-child {
+  border-bottom: none;
+}
+
+/* ③ 公演内容 */
+.activity-detail-description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #2a2a2a;
+}
+
+.activity-detail-description p {
+  margin: 0;
+}
+
+/* ⑥ 開催回選択 */
+.activity-detail-performances {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activity-detail-performance-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background-color: #ffffff;
+  border: 2px solid #e0e6e3;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.activity-detail-performance-item:hover:not(:disabled) {
+  border-color: #a3b9b3;
+  background-color: #f8f9f8;
+}
+
+.activity-detail-performance-item.selected {
+  border-color: #a3b9b3;
+  background-color: #e8f0ed;
+}
+
+.activity-detail-performance-item:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.activity-detail-performance-item.sold-out {
+  background-color: #f8f9f8;
+}
+
+.activity-detail-performance-date {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  flex: 1;
+}
+
+.activity-detail-performance-time {
+  font-size: 0.95rem;
+  color: #555555;
+  margin-left: 16px;
+}
+
+.activity-detail-performance-seats {
+  margin-left: auto;
+  text-align: right;
+}
+
+.activity-detail-performance-remaining {
+  font-size: 0.9rem;
+  color: #555555;
+  font-weight: 500;
+}
+
+.activity-detail-performance-soldout {
+  font-size: 0.9rem;
+  color: #dc3545;
+  font-weight: 600;
+}
+
+/* ⑦ 「予約する」ボタン */
+.activity-detail-actions {
+  margin-top: 16px;
+  text-align: center;
+}
+
+.activity-detail-reserve-btn {
+  background-color: #a3b9b3;
+  color: #ffffff;
+  border: none;
+  padding: 16px 48px;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  width: 100%;
+  max-width: 400px;
+}
+
+.activity-detail-reserve-btn:hover:not(:disabled) {
+  background-color: #8fa59f;
+}
+
+.activity-detail-reserve-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* レスポンシブ対応（タブレット） */
+@media (max-width: 768px) {
+  .activity-detail-page {
+    padding: 100px 20px 60px;
+  }
+  
+  .activity-detail-title {
+    font-size: 1.8rem;
+  }
+  
+  .activity-detail-section-title {
+    font-size: 1.2rem;
+  }
+  
+  .activity-detail-info-label {
+    min-width: 70px;
+  }
+}
+
+/* レスポンシブ対応（モバイル） */
+@media (max-width: 480px) {
+  .activity-detail-page {
+    padding: 80px 16px 40px;
+  }
+  
+  .activity-detail-title {
+    font-size: 1.5rem;
+  }
+  
+  .activity-detail-info-section {
+    padding: 16px;
+  }
+  
+  .activity-detail-info-row {
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .activity-detail-info-label {
+    min-width: auto;
+  }
+  
+  .activity-detail-reserve-btn {
+    font-size: 1.1rem;
+    padding: 14px 32px;
+  }
+}
+

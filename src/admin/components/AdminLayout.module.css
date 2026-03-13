@@ -1,0 +1,144 @@
+/**
+ * AdminLayout スタイル
+ * 一般サイトのナビ・背景・フォントに合わせています。
+ */
+
+.adminLayout {
+  display: flex;
+  min-height: 100vh;
+  background-color: var(--bg-base, #f7f5f1);
+}
+
+/* サイドバー（一般サイトの Navigation と同じ #232e2c） */
+.sidebar {
+  width: 260px;
+  background-color: #232e2c;
+  color: #ffffff;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.sidebarHeader {
+  padding: 30px 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sidebarTitle {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin: 0 0 5px 0;
+  color: #ffffff;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.05em;
+}
+
+.sidebarSubtitle {
+  font-size: 0.85rem;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.75);
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.03em;
+}
+
+.nav {
+  flex: 1;
+  padding: 20px 0;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  padding: 14px 20px;
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+
+.navItem:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+}
+
+.navItemActive {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-left: 3px solid #c7d8d2;
+  padding-left: 17px;
+}
+
+.navIcon {
+  font-size: 1.15rem;
+  margin-right: 12px;
+  width: 24px;
+  text-align: center;
+}
+
+.navLabel {
+  flex: 1;
+}
+
+.main {
+  flex: 1;
+  padding: 40px;
+  overflow-x: hidden;
+  background-color: var(--bg-base, #f7f5f1);
+}
+
+@media (max-width: 768px) {
+  .adminLayout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .sidebarHeader {
+    padding: 20px;
+    border-bottom: none;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .sidebarTitle {
+    font-size: 1.2rem;
+  }
+
+  .sidebarSubtitle {
+    display: none;
+  }
+
+  .nav {
+    flex: 1;
+    display: flex;
+    overflow-x: auto;
+    padding: 0;
+  }
+
+  .navItem {
+    white-space: nowrap;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    padding: 20px 16px;
+  }
+
+  .navItemActive {
+    border-left: none;
+    border-bottom: 3px solid #c7d8d2;
+    padding-left: 16px;
+  }
+
+  .navIcon {
+    margin-right: 8px;
+  }
+
+  .main {
+    padding: 20px;
+  }
+}

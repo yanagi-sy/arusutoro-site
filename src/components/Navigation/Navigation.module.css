@@ -1,0 +1,405 @@
+/* Navigationコンポーネントのスタイル */
+/* スティッキーヘッダー：ページのどこを見ていても常に画面上部に表示 */
+
+/* ナビゲーション全体（スティッキーヘッダー：常に画面上部に固定表示） */
+.navigation {
+  /* 背景色（コンポーネント仕様: #abc9bf） */
+  background-color: #232e2c;
+  
+  /* スクロールしても見やすいように少し影を付ける */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  
+  /* 上下の余白（縦幅をさらに縮める） */
+  padding: 3px 30px;
+  
+  /* 位置を固定（スティッキーヘッダー：常に画面上部に固定、スクロール時についてくる） */
+  /* !importantを追加して、他のスタイルに上書きされないようにする */
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  
+  /* z-indexを設定（すべてのコンテンツより前面に表示） */
+  /* !importantを追加して、他のスタイルに上書きされないようにする */
+  z-index: 10000 !important;
+  
+  /* 幅 */
+  width: 100%;
+  
+  /* トランジション（背景色の変化を滑らかに） */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* ナビゲーションコンテナ（横幅を最大限使うレイアウト、中央寄せをやめる） */
+.navContainer {
+  /* 最大幅を設定（横幅を最大限使う） */
+  max-width: 100%;
+  
+  /* 左右に余白を設定（中央寄せをやめ、横幅を活かす） */
+  /* 右側のパディングを減らして、ナビ項目を5文字分左へずらす */
+  margin: 0;
+  padding: 0 50px 0 50px;
+  
+  /* フレックスボックスで横並びレイアウト */
+  display: flex;
+  
+  /* 左右の端に配置 */
+  justify-content: space-between;
+  
+  /* 垂直方向の中央揃え */
+  align-items: center;
+  
+  /* 幅 */
+  width: 100%;
+}
+
+/* テキストロゴ（左側、クリック不可、表示のみ） */
+.navLogoText {
+  /* リンクではないので、通常のdivとして表示 */
+  display: block;
+}
+
+/* テキストロゴのラッパー（ふりがなと本文を縦に配置） */
+.navLogoTextWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+}
+
+/* ふりがな（げきだん あるすとろ） */
+.navLogoTextRuby {
+  /* フォントサイズ（劇團 或素翔鷺より5ポイント小さく：16px） */
+  font-size: 14px;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（少し薄めの白） */
+  color: rgba(255, 255, 255, 0.85);
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+  
+  /* 行の高さ */
+  line-height: 1.2;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* テキストロゴのラベル（選択肢と同じ文字サイズ） */
+.navLogoTextLabel {
+  /* フォントサイズ（選択肢と同じ：21px） */
+  font-size: 21px;
+  
+  /* フォントウェイト（太字、明確に） */
+  font-weight: 700;
+  
+  /* 色（白） */
+  color: #ffffff;
+  
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* フォントファミリー（劇団名と同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+  
+  /* 行の高さ */
+  line-height: 1.3;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* メニュー部分（右側、5文字分左へずらす） */
+.navMenu {
+  /* リストのスタイルをリセット */
+  list-style: none;
+  
+  /* パディングとマージンをリセット */
+  padding: 0;
+  margin: 0;
+  
+  /* フレックスボックスで横並び */
+  display: flex;
+  
+  /* メニュー項目間の間隔（1文字分） */
+  gap: 1ch;
+  
+  /* 垂直方向の中央揃え */
+  align-items: center;
+  
+  /* 少し右へ寄せる */
+  margin-left: 5px;
+}
+
+/* メニュー項目 */
+.navMenuItem {
+  /* リスト項目のスタイルをリセット */
+  margin: 0;
+  padding: 0;
+  
+  /* フレックスボックスで区切り線とリンクを横並び */
+  display: flex;
+  align-items: center;
+}
+
+/* ナビ項目間の区切り線 */
+.navMenuDivider {
+  /* 縦の区切り線 */
+  width: 1px;
+  height: 22px; /* 少し延長 */
+  
+  /* 背景色（白系） */
+  background-color: rgba(255, 255, 255, 0.4);
+  
+  /* マージン（区切り線の前後、少し減らす） */
+  margin: 0 18px;
+  
+  /* 表示 */
+  display: block;
+}
+
+/* メニューリンク（全項目を同じスタイルで統一） */
+.navLink {
+  /* テキストの装飾をなし */
+  text-decoration: none;
+  
+  /* 色（白） */
+  color: #ffffff;
+  
+  /* フォントサイズを3ポイント縮小（21px） */
+  font-size: 21px;
+  
+  /* フォントウェイト（太め） */
+  font-weight: 600;
+  
+  /* ホバー時の色変化 */
+  transition: color 0.3s ease;
+  
+  /* パディング（クリック領域を広げる、縦幅を縮める） */
+  padding: 4px 0;
+  
+  /* ブロック要素として表示 */
+  display: block;
+  
+  /* 補足文を含む場合のレイアウト */
+  position: relative;
+  
+  /* フォントファミリー（劇団名と同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* リンクホバー時のスタイル */
+.navLink:hover {
+  /* ホバー時の色（少し薄めの白） */
+  color: #cccccc;
+}
+
+/* 補足文（note）のスタイル（文抗時代） */
+.navLinkNote {
+  /* ブロック要素として表示（改行される） */
+  display: block;
+  
+  /* フォントサイズ（小さく、控えめに） */
+  font-size: 0.7rem;
+  
+  /* フォントウェイト（太め） */
+  font-weight: 900;
+  
+  /* 色（少し薄めの白） */
+  color: rgba(255, 255, 255, 0.8);
+  
+  /* 上余白（リンクテキストとの間隔） */
+  margin-top: 2px;
+  
+  /* 行の高さ */
+  line-height: 1.3;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.02em;
+  
+  /* フォントファミリー（劇団名と同じフォント） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 薄く黒い影を追加（可読性向上） */
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* ハンバーガーボタン（デフォルトは非表示） */
+.navHamburger {
+  display: none;
+}
+
+.navHamburgerLine {
+  width: 30px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s linear;
+  position: relative;
+  transform-origin: 1px;
+}
+
+/* ハンバーガーボタンが開いている状態のクラス */
+.open {
+  /* このクラスは親要素に適用され、子要素のスタイルに影響を与える */
+}
+
+/* ハンバーガーボタンが開いている状態 */
+.navHamburger.open .navHamburgerLine:first-child {
+  transform: rotate(45deg);
+}
+
+.navHamburger.open .navHamburgerLine:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.navHamburger.open .navHamburgerLine:nth-child(3) {
+  transform: rotate(-45deg);
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .navigation {
+    padding: 1px 25px; /* 縦幅を2/3に縮小（2px → 1px） */
+  }
+  
+  .navContainer {
+    padding: 0 40px 0 40px;
+  }
+  
+  .navLogoTextRuby {
+    font-size: 15px; /* 20px - 5px */
+  }
+  
+  .navLogoTextLabel {
+    font-size: 20px;
+  }
+  
+  .navLink {
+    font-size: 20px;
+    padding: 2px 0; /* 縦幅を2/3に縮小（3px → 2px） */
+  }
+  
+  .navMenu {
+    margin-right: 90px; /* タブレットでは少し控えめに */
+  }
+  
+  .navMenuDivider {
+    margin: 0 15px;
+    height: 13px; /* 縦幅を2/3に縮小（19px → 13px） */
+  }
+}
+
+/* レスポンシブ対応：モバイルサイズ（768px以下） */
+@media (max-width: 768px) {
+  .navigation {
+    padding: 7px 20px; /* 縦幅を2/3に縮小（10px → 7px） */
+  }
+  
+  .navContainer {
+    padding: 0;
+  }
+  
+  /* テキストロゴのサイズ */
+  .navLogoTextRuby {
+    font-size: 14px;
+  }
+  
+  .navLogoTextLabel {
+    font-size: 19px;
+  }
+
+  /* ハンバーガーボタンを表示 */
+  .navHamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 17px; /* 縦幅を2/3に縮小（25px → 17px） */
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 10001; /* メニューより前面に表示 */
+    margin-right: 10px;
+  }
+
+  /* メニュー（モバイル時はオーバーレイとして表示） */
+  .navMenu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 100%; /* 全画面幅 */
+    background-color: #232e2c; /* ナビゲーションと同じ背景色 */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(100%); /* 初期状態は画面外（右）へ隠す */
+    transition: transform 0.3s ease-in-out;
+    margin: 0; /* マージンリセット */
+    padding-top: 40px; /* ヘッダー分空ける（縦幅を2/3に縮小：60px → 40px） */
+    gap: 40px; /* 項目間隔を広めに */
+    z-index: 10000; /* ロゴよりは下だが、コンテンツより上 */
+  }
+
+  /* メニューが開いているとき */
+  .navMenu.active {
+    transform: translateX(0); /* 画面内にスライドイン */
+  }
+
+  /* モバイルメニュー項目 */
+  .navMenuItem {
+    width: 100%;
+    text-align: center;
+    padding: 7px 0; /* 縦幅を2/3に縮小（10px → 7px） */
+  }
+
+  /* モバイルでは区切り線を非表示 */
+  .navMenuDivider {
+    display: none;
+  }
+
+  /* リンクのフォントサイズ（モバイルでは大きく押しやすく） */
+  .navLink {
+    font-size: 24px;
+    padding: 10px 0; /* 縦幅を2/3に縮小（15px → 10px） */
+    display: inline-block;
+    width: 100%;
+    text-decoration: underline; /* 細い下線を適用 */
+    text-decoration-thickness: 1px; /* 下線の太さを細く */
+    text-underline-offset: 4px; /* 下線の位置を調整 */
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面の場合 */
+@media (max-width: 480px) {
+  .navLogoTextRuby {
+    font-size: 13px;
+  }
+  
+  .navLogoTextLabel {
+    font-size: 18px;
+  }
+  
+  .navLink {
+    font-size: 20px; /* 小画面では少し控えめに */
+    text-decoration: underline; /* 細い下線を適用 */
+    text-decoration-thickness: 1px; /* 下線の太さを細く */
+    text-underline-offset: 4px; /* 下線の位置を調整 */
+  }
+}
+

@@ -8,8 +8,8 @@
   /* 最小高さを確保 */
   min-height: 100vh;
   
-  /* パディング */
-  padding: 100px 20px;
+  /* パディング（ヘッダーに被らないように上部に十分な余白を確保） */
+  padding: 120px 20px;
 }
 
 /* ページヘッダー */
@@ -108,7 +108,7 @@
 /* レスポンシブ対応：タブレットサイズ */
 @media (max-width: 1024px) {
   .about-page {
-    padding: 80px 20px;
+    padding: 100px 20px;
   }
   
   .about-page-title {
@@ -128,7 +128,7 @@
 /* レスポンシブ対応：小さな画面（モバイル） */
 @media (max-width: 768px) {
   .about-page {
-    padding: 60px 15px;
+    padding: 80px 15px;
   }
   
   .about-page-title {

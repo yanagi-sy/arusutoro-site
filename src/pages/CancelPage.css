@@ -1,0 +1,256 @@
+/**
+ * CancelPageコンポーネントのスタイル
+ *
+ * キャンセルページのスタイルを定義します。
+ * 和風・淡い配色のサイトトーンに合わせ、予約ページと整合させています。
+ */
+
+.cancel-page {
+  background-color: var(--bg-base);
+  padding: 120px 24px 80px;
+  min-height: 100vh;
+}
+
+.cancel-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.cancel-message {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.cancel-message-success .cancel-title {
+  color: #1f3130;
+}
+
+.cancel-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin: 0 0 16px 0;
+}
+
+.cancel-text {
+  font-size: 1.1rem;
+  color: #555555;
+  margin: 0;
+  line-height: 1.8;
+}
+
+.cancel-content {
+  margin-bottom: 40px;
+}
+
+.cancel-section {
+  margin-bottom: 24px;
+}
+
+.cancel-section-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin: 0 0 16px 0;
+  padding-bottom: 8px;
+  border-bottom: 2px solid #e0e6e3;
+}
+
+.cancel-info-box {
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  border: 1px solid #e0e6e3;
+}
+
+.cancel-info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.cancel-info-row:last-child {
+  border-bottom: none;
+}
+
+.cancel-info-label {
+  font-size: 1rem;
+  color: #555555;
+  font-weight: 500;
+}
+
+.cancel-info-value {
+  font-size: 1rem;
+  color: #2a2a2a;
+}
+
+.cancel-form {
+  margin-bottom: 32px;
+}
+
+.cancel-form-group {
+  margin-bottom: 24px;
+}
+
+.cancel-form-label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2a2a2a;
+  margin-bottom: 8px;
+}
+
+.cancel-form-input {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  color: #2a2a2a;
+  background-color: #ffffff;
+  border: 1px solid #e0e6e3;
+  border-radius: 6px;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.cancel-form-input::placeholder {
+  color: #999;
+}
+
+.cancel-form-input:focus {
+  outline: none;
+  border-color: #a3b9b3;
+}
+
+.cancel-actions {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cancel-actions-multi {
+  justify-content: center;
+}
+
+.cancel-home-btn {
+  background-color: #a3b9b3;
+  color: #ffffff;
+  border: none;
+  padding: 14px 48px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-home-btn:hover {
+  background-color: #8fa59f;
+}
+
+.cancel-home-btn-secondary {
+  background-color: #ffffff;
+  color: #2a2a2a;
+  border: 1px solid #d2d8d2;
+}
+
+.cancel-home-btn-secondary:hover {
+  background-color: #f5f5f5;
+  border-color: #a3b9b3;
+}
+
+.cancel-back-btn {
+  background-color: #ffffff;
+  color: #2a2a2a;
+  border: 1px solid #d2d8d2;
+  padding: 14px 32px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.cancel-back-btn:hover {
+  background-color: #f5f5f5;
+  border-color: #a3b9b3;
+}
+
+.cancel-submit-btn {
+  background-color: #c45c5c;
+  color: #ffffff;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.cancel-submit-btn:hover:not(:disabled) {
+  background-color: #b04a4a;
+}
+
+.cancel-submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .cancel-page {
+    padding: 100px 20px 60px;
+  }
+
+  .cancel-title {
+    font-size: 1.9rem;
+  }
+
+  .cancel-section-title {
+    font-size: 1.2rem;
+  }
+
+  .cancel-info-box {
+    padding: 20px;
+  }
+
+  .cancel-actions-multi {
+    flex-direction: column;
+  }
+
+  .cancel-actions-multi .cancel-back-btn,
+  .cancel-actions-multi .cancel-submit-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .cancel-page {
+    padding: 80px 16px 40px;
+  }
+
+  .cancel-title {
+    font-size: 1.6rem;
+  }
+
+  .cancel-text {
+    font-size: 1rem;
+  }
+
+  .cancel-info-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .cancel-info-box {
+    padding: 16px;
+  }
+
+  .cancel-home-btn,
+  .cancel-submit-btn {
+    width: 100%;
+  }
+}

@@ -1,0 +1,32 @@
+.wrapper {
+  text-align: center;
+  padding: 3rem 1.5rem;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #2a2a2a;
+  margin: 0 0 1rem;
+}
+
+.description {
+  font-size: 1rem;
+  color: #555;
+  margin: 0 0 1.5rem;
+}
+
+.backButton {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #2a2a2a;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.backButton:hover {
+  background-color: #444;
+}

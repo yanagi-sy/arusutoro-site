@@ -1,0 +1,346 @@
+/* PerformancesSectionコンポーネントのスタイル */
+
+/* セクション全体の設定 */
+.performances {
+  /* 背景色（白〜生成り、和紙のような色） */
+  background-color: #faf9f6; /* 生成りがかった白 */
+  
+  /* 上下に十分な余白を設定（舞台美術的なレイアウト感を出すため多めに） */
+  padding: 100px 20px;
+  
+  /* 最小高さを確保 */
+  min-height: 400px;
+}
+
+/* コンテンツコンテナ */
+.performancesContainer {
+  /* 最大幅を設定 */
+  max-width: 1100px;
+  
+  /* 中央寄せ */
+  margin: 0 auto;
+  
+  /* 幅が狭い場合の余白確保 */
+  width: 100%;
+}
+
+/* セクション見出し */
+.performancesTitle {
+  /* フォントサイズ */
+  font-size: 2rem;
+  
+  /* 太字 */
+  font-weight: bold;
+  
+  /* 中央寄せ */
+  text-align: center;
+  
+  /* 下余白（グリッドとの間隔、しっかり取る） */
+  margin-bottom: 60px;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.1em;
+}
+
+/* スライダーの枠（1画面1カード） */
+.performancesSlider {
+  position: relative;
+  background: linear-gradient(135deg, #f7f4eb 0%, #f1ede3 100%);
+  border-radius: 16px;
+  padding: 28px;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  align-items: stretch;
+}
+
+/* 画像エリア（16:9比率で自動トリミング） */
+.performanceImageFrame {
+  width: 100%;
+  /* 16:9比率を維持（aspect-ratioを使用） */
+  aspect-ratio: 16 / 9;
+  background: #f8f5ee;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.performanceImageCover {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.performanceImage {
+  width: 100%;
+  height: 100%;
+  /* 中央寄せで自動トリミング（LINEのプロフィール画像方式） */
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  filter: saturate(0.92) brightness(1.02);
+}
+
+/* 公演カードのスタイル（紙UI） */
+.performanceCard {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 32px 30px;
+  border-radius: 12px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.performanceCard:hover {
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* カード内のタイトル */
+.cardTitle {
+  /* フォントサイズ */
+  font-size: 1.5rem;
+  
+  /* 太字 */
+  font-weight: 700;
+  
+  /* 下余白（他の情報との間隔） */
+  margin-bottom: 20px;
+  
+  /* 上余白 */
+  margin-top: 0;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* フォントファミリー（和風の雰囲気を出すため、明朝体） */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.05em;
+}
+
+/* 上演日時 */
+.cardDate {
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 18px;
+  margin-top: 0;
+  color: #3a3a3a;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.04em;
+}
+
+/* カード内のあらすじ（短い一文） */
+.cardSynopsis {
+  margin-top: 0;
+  margin-bottom: 28px;
+  font-size: 1rem;
+  line-height: 1.85;
+  color: #424242;
+  word-wrap: break-word;
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  letter-spacing: 0.02em;
+}
+
+/* CTAボタン群 */
+.cardActions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+.cardBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.detailBtn {
+  background: #f3eee2;
+  color: #2f2f2f;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.reserveBtn {
+  background: #c7d8d2;
+  color: #1f3130;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+}
+
+.cardBtn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.cardBtn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* ナビゲーション矢印（2件以上のときのみ表示） */
+.navArrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.92);
+  color: #2e2e2e;
+  font-size: 26px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+.navArrow:hover {
+  transform: translateY(-50%) scale(1.03);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.16);
+}
+
+.navArrowLeft {
+  left: -16px;
+}
+
+.navArrowRight {
+  right: -16px;
+}
+
+/* インジケータ */
+.sliderDots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid #8da6a0;
+  background: #f0f0ec;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.dot.active {
+  background: #c7d8d2;
+  border-color: #6f8c85;
+  transform: scale(1.05);
+}
+
+/* レスポンシブ対応：タブレットサイズ */
+@media (max-width: 1024px) {
+  .performances {
+    padding: 80px 20px;
+  }
+  
+  .performancesTitle {
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+  }
+  
+  .performanceCard {
+    padding: 35px 30px;
+  }
+  
+  .cardTitle {
+    font-size: 1.4rem;
+  }
+}
+
+/* レスポンシブ対応：小さな画面（モバイル） */
+@media (max-width: 768px) {
+  .performances {
+    padding: 60px 15px;
+  }
+  
+  .performancesTitle {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
+  }
+  
+  .performanceCard {
+    padding: 30px 25px;
+    border-radius: 6px;
+  }
+  
+  .cardTitle {
+    font-size: 1.3rem;
+    margin-bottom: 18px;
+  }
+  
+  .cardDate {
+    font-size: 0.9rem;
+    margin-bottom: 18px;
+  }
+  
+  .cardSynopsis {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+  }
+}
+
+/* レスポンシブ対応：非常に小さな画面 */
+@media (max-width: 480px) {
+  .performances {
+    padding: 50px 10px;
+  }
+  
+  .performancesTitle {
+    font-size: 1.4rem;
+    margin-bottom: 35px;
+  }
+  
+  .performanceCard {
+    padding: 25px 20px;
+    border-radius: 4px;
+  }
+  
+  .cardTitle {
+    font-size: 1.2rem;
+    margin-bottom: 15px;
+  }
+  
+  .cardDate {
+    font-size: 0.85rem;
+    margin-bottom: 15px;
+  }
+  
+  .cardSynopsis {
+    font-size: 0.9rem;
+    line-height: 1.7;
+    margin-bottom: 18px;
+  }
+}
+

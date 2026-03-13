@@ -66,78 +66,6 @@
   letter-spacing: 0.05em;
 }
 
-/* タグフィルター */
-.activities-filters {
-  /* 最大幅を設定 */
-  max-width: 1000px;
-  
-  /* 中央寄せ */
-  margin: 0 auto 50px;
-  
-  /* フレックスボックスで横並び */
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  
-  /* 中央寄せ */
-  justify-content: center;
-}
-
-/* フィルターボタン */
-.activities-filter-btn {
-  /* ボタンのスタイルをリセット */
-  border: 1px solid #cccccc;
-  background-color: #ffffff;
-  
-  /* 色（墨色） */
-  color: #2a2a2a;
-  
-  /* フォントサイズ */
-  font-size: 0.9rem;
-  
-  /* フォントウェイト（通常） */
-  font-weight: 400;
-  
-  /* パディング */
-  padding: 8px 20px;
-  
-  /* 角を丸く */
-  border-radius: 20px;
-  
-  /* カーソルをポインターに */
-  cursor: pointer;
-  
-  /* ホバー時の効果 */
-  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  
-  /* フォントファミリー */
-  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
-  
-  /* 文字間隔 */
-  letter-spacing: 0.03em;
-}
-
-/* フィルターボタンホバー時 */
-.activities-filter-btn:hover {
-  /* 背景色を変更 */
-  background-color: #f0f0f0;
-  
-  /* ボーダー色を変更 */
-  border-color: #999999;
-}
-
-/* フィルターボタンアクティブ時 */
-.activities-filter-btn.active {
-  /* 背景色（墨色） */
-  background-color: #2a2a2a;
-  
-  /* 文字色（白） */
-  color: #ffffff;
-  
-  /* ボーダー色 */
-  border-color: #2a2a2a;
-}
-
 /* 活動セクション */
 .activities-section {
   /* 最大幅を設定 */
@@ -187,7 +115,7 @@
   background-color: #ffffff;
   
   /* パディング */
-  padding: 30px 35px;
+  padding: 28px 30px;
   
   /* 角をやや丸く */
   border-radius: 8px;
@@ -198,6 +126,9 @@
   /* ホバー時の効果 */
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
+
+/* カード内レイアウト：テキスト中心（画像なし）
+   activity-contentクラスは使用しないが、既存コードとの互換性のため残す */
 
 /* 活動カードホバー時 */
 .activity-card:hover {
@@ -214,19 +145,19 @@
   opacity: 0.85;
 }
 
-/* 活動日付 */
+/* 活動日付（見やすく強調） */
 .activity-date {
   /* フォントサイズ */
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   
-  /* フォントウェイト（通常） */
-  font-weight: 400;
+  /* フォントウェイト（やや太め） */
+  font-weight: 500;
   
-  /* 色（少し薄め） */
-  color: #777777;
+  /* 色（少し濃めで見やすく） */
+  color: #666666;
   
   /* 下余白 */
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   
   /* フォントファミリー */
   font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
@@ -237,13 +168,22 @@
 
 /* 活動ヘッダー（タグとタイトル） */
 .activity-header {
-  /* フレックスボックスで横並び */
+  /* フレックスボックスで縦並び */
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 12px;
   
-  /* 下余白 */
-  margin-bottom: 15px;
+  /* 下余白（見やすく調整） */
+  margin-bottom: 18px;
+}
+
+/* バッジコンテナ */
+.activity-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 
 /* 活動タグ */
@@ -276,10 +216,48 @@
   white-space: nowrap;
 }
 
-/* 活動タイトル */
-.activity-title {
+/* ステータスバッジ */
+.activity-status-badge {
   /* フォントサイズ */
-  font-size: 1.3rem;
+  font-size: 0.75rem;
+  
+  /* フォントウェイト（太め） */
+  font-weight: 600;
+  
+  /* パディング */
+  padding: 4px 10px;
+  
+  /* 角を丸く */
+  border-radius: 3px;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+  
+  /* 白スペースを保持 */
+  white-space: nowrap;
+}
+
+/* Coming Soon バッジ */
+.activity-status-badge.coming-soon {
+  background-color: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffc107;
+}
+
+/* 終了バッジ */
+.activity-status-badge.ended {
+  background-color: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #dee2e6;
+}
+
+/* 活動タイトル（見やすく強調） */
+.activity-title {
+  /* フォントサイズ（少し大きく） */
+  font-size: 1.4rem;
   
   /* フォントウェイト（太字） */
   font-weight: 700;
@@ -295,6 +273,9 @@
   
   /* 文字間隔 */
   letter-spacing: 0.03em;
+  
+  /* 行間を調整 */
+  line-height: 1.5;
 }
 
 /* 活動説明文 */
@@ -318,58 +299,46 @@
   letter-spacing: 0.02em;
 }
 
-/* 外部リンクセクション */
-.activity-external-link {
-  /* 上余白 */
-  margin-top: 20px;
-  
-  /* パディング */
-  padding-top: 20px;
-  
-  /* ボーダー（上） */
-  border-top: 1px solid #e0e0e0;
+/* サムネイル関連のスタイルは削除（一覧ページでは画像を使用しない） */
+
+/* CTAボタン */
+.activity-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
-/* 外部リンクボタン */
-.activity-external-link-btn {
-  /* テキストの装飾をなし */
-  text-decoration: none;
-  
-  /* 色（墨色） */
-  color: #2a2a2a;
-  
-  /* フォントサイズ */
+.activity-btn {
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 8px 16px;
   font-size: 0.95rem;
-  
-  /* フォントウェイト（通常） */
-  font-weight: 400;
-  
-  /* 下線を追加（控えめに） */
-  border-bottom: 1px solid #2a2a2a;
-  
-  /* パディング */
-  padding-bottom: 2px;
-  
-  /* ホバー時の色変化 */
-  transition: color 0.3s ease, border-color 0.3s ease;
-  
-  /* フォントファミリー */
-  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
-  
-  /* 文字間隔 */
-  letter-spacing: 0.05em;
-  
-  /* インライン要素として表示 */
-  display: inline-block;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
 }
 
-/* 外部リンクボタンホバー時 */
-.activity-external-link-btn:hover {
-  /* ホバー時の色（少し薄く） */
-  color: #666666;
-  
-  /* 下線の色も変更 */
-  border-bottom-color: #666666;
+.detail-btn {
+  background: #f3eee2;
+  color: #2f2f2f;
+  border-color: rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+.reserve-btn {
+  background: #c7d8d2;
+  color: #1f3130;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.09);
+}
+
+.activity-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+}
+
+.activity-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* 活動がない場合 */
@@ -396,7 +365,7 @@
 /* レスポンシブ対応：タブレットサイズ */
 @media (max-width: 1024px) {
   .activities-page {
-    padding: 60px 20px;
+    padding: 80px 20px; /* 他のページに合わせて調整（60px → 80px） */
   }
   
   .activities-page-title {
@@ -408,14 +377,16 @@
   }
   
   .activity-card {
-    padding: 25px 30px;
+    padding: 24px 26px;
   }
+  
+  /* 画像なしのため、gridレイアウトは不要 */
 }
 
 /* レスポンシブ対応：小さな画面（モバイル） */
 @media (max-width: 768px) {
   .activities-page {
-    padding: 50px 15px;
+    padding: 60px 15px; /* 他のページに合わせて調整（50px → 60px） */
   }
   
   .activities-page-title {
@@ -444,9 +415,11 @@
   }
   
   .activity-card {
-    padding: 22px 25px;
+    padding: 22px 22px;
     border-radius: 6px;
   }
+  
+  /* 画像なしのため、gridレイアウトは不要 */
   
   .activity-header {
     flex-direction: column;
@@ -466,7 +439,7 @@
 /* レスポンシブ対応：非常に小さな画面 */
 @media (max-width: 480px) {
   .activities-page {
-    padding: 40px 10px;
+    padding: 50px 10px; /* 他のページに合わせて調整（40px → 50px） */
   }
   
   .activities-page-title {
@@ -479,7 +452,7 @@
   }
   
   .activity-card {
-    padding: 20px 20px;
+    padding: 20px 18px;
   }
   
   .activity-title {

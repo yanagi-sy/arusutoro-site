@@ -255,6 +255,48 @@
   transform: translateY(0);
 }
 
+/* 送信完了メッセージ */
+.contact-success-message {
+  /* 背景色（白、和紙の紙面のような印象） */
+  background-color: #ffffff;
+  
+  /* パディング */
+  padding: 60px 50px;
+  
+  /* 角をやや丸く */
+  border-radius: 8px;
+  
+  /* 影をごく薄く付ける */
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  
+  /* 中央寄せ */
+  text-align: center;
+}
+
+/* 送信完了メッセージテキスト */
+.contact-success-text {
+  /* フォントサイズ */
+  font-size: 1.1rem;
+  
+  /* フォントウェイト（通常） */
+  font-weight: 400;
+  
+  /* 色（墨色） */
+  color: #2a2a2a;
+  
+  /* 下余白 */
+  margin: 0 0 30px;
+  
+  /* 行間 */
+  line-height: 1.8;
+  
+  /* フォントファミリー */
+  font-family: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', 'YuMincho', 'MS PMincho', serif;
+  
+  /* 文字間隔 */
+  letter-spacing: 0.03em;
+}
+
 /* レスポンシブ対応：タブレットサイズ */
 @media (max-width: 1024px) {
   .contact-page {
@@ -322,6 +364,14 @@
     font-size: 0.95rem;
     padding: 10px 30px;
     width: 100%;
+  }
+  
+  .contact-success-message {
+    padding: 40px 30px;
+  }
+  
+  .contact-success-text {
+    font-size: 1rem;
   }
 }
 

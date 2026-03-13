@@ -1,0 +1,11 @@
+/**
+ * AdminApp グローバルスタイル
+ * 一般サイト（http://localhost:5173/）のUIに合わせた配色・フォントを適用します。
+ */
+
+/* 管理者ページの背景（一般サイトと同じ和紙風の生成り） */
+body.admin-page-active {
+  background-color: var(--bg-base, #f7f5f1);
+  margin: 0;
+  padding: 0;
+}
