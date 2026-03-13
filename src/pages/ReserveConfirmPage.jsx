@@ -1,11 +1,14 @@
 /**
  * ReserveConfirmPage（予約確認ページ）
  *
- * 予約内容の確認表示と、修正・確定への遷移を担当します。
+ * 予約内容の確認表示と、修正・確定・Firestore への保存を担当します。
  * 日付表示は utils/format に委譲しています。
  */
 
+import { useState } from 'react'
 import { useLocation, useNavigate, useParams } from 'react-router-dom'
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore'
+import { db } from '../lib/firebase'
 import { formatDate } from '../utils/format'
 import NotFoundMessage from '../components/NotFoundMessage'
 import './ReserveConfirmPage.css'
@@ -15,6 +18,7 @@ function ReserveConfirmPage() {
   const navigate = useNavigate()
   const location = useLocation()
   const reservationData = location.state
+  const [saving, setSaving] = useState(false)
 
   if (!reservationData) {
     return (
@@ -31,8 +35,15 @@ function ReserveConfirmPage() {
     )
   }
 
-  const { activity, performance, name, email, numberOfPeople, notes } =
-    reservationData
+  const {
+    activity,
+    performance,
+    performanceId,
+    name,
+    email,
+    numberOfPeople,
+    notes
+  } = reservationData
 
   const handleEditClick = () => {
     navigate(`/reserve/${activityId}`, {
@@ -40,13 +51,38 @@ function ReserveConfirmPage() {
     })
   }
 
-  const handleCompleteClick = () => {
-    const cancelToken =
-      reservationData.cancelToken ||
-      'demo-token-' + Math.random().toString(36).slice(2, 12)
-    navigate(`/reserve/${activityId}/complete`, {
-      state: { ...reservationData, cancelToken }
-    })
+  const handleCompleteClick = async () => {
+    if (saving) return
+    setSaving(true)
+
+    try {
+      // キャンセルトークンを生成
+      const cancelToken =
+        reservationData.cancelToken ||
+        'resv-' + Math.random().toString(36).slice(2, 14)
+
+      // Firestore に予約データを書き込み
+      await addDoc(collection(db, 'reservations'), {
+        performanceId: Number(activityId), // 公演ID（数値に統一）
+        slotId: performance?.id || performanceId || 'unknown', // 開催回ID（無ければ 'unknown'）
+        name,
+        email,
+        people: Number(numberOfPeople),
+        note: notes || '',
+        status: 'active',
+        cancelToken,
+        createdAt: serverTimestamp()
+      })
+
+      // 予約完了ページへ遷移（キャンセルトークンを渡す）
+      navigate(`/reserve/${activityId}/complete`, {
+        state: { ...reservationData, cancelToken }
+      })
+    } catch (error) {
+      console.error('予約の保存に失敗しました:', error)
+      alert('予約の保存に失敗しました。時間をおいて再度お試しください。')
+      setSaving(false)
+    }
   }
 
   return (
@@ -115,8 +151,9 @@ function ReserveConfirmPage() {
             type="button"
             className="reserve-confirm-complete-btn"
             onClick={handleCompleteClick}
+            disabled={saving}
           >
-            予約を確定する
+            {saving ? '保存中...' : '予約を確定する'}
           </button>
         </div>
       </div>
